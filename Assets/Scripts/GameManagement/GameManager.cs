@@ -38,7 +38,7 @@ namespace Moonshot.GameManagement {
 			LoadingScreen.SetActive(true);
 
 			scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.TITLE_SCREEN));
-			scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.MAIN, LoadSceneMode.Additive));
+			scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.TEST_LEVEL, LoadSceneMode.Additive));
 
 			StartCoroutine(GetSceneLoadProgress());
 		}

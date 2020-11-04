@@ -3,7 +3,7 @@
 	public enum SceneIndexes {
 		MANAGER = 0,
 		TITLE_SCREEN = 1,
-		MAIN = 2
+		TEST_LEVEL = 2
 	}
 
 }
