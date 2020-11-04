@@ -33,13 +33,14 @@ public class PlayerController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    horizontal = Input.GetAxis("Horizontal");
-    vertical = Input.GetAxis("Vertical");
-    if (Input.GetKey(KeyCode.LeftShift))
+    horizontal = Input.GetAxisRaw("Horizontal");
+    vertical = Input.GetAxisRaw("Vertical");
+
+    if (Input.GetButton("Sneak"))
     {
       currentMovementType = MovementType.SNEAK;
     }
-    else if (Input.GetKey(KeyCode.Space))
+    else if (Input.GetButton("Run"))
     {
       currentMovementType = MovementType.RUN;
     }
@@ -51,12 +52,8 @@ public class PlayerController : MonoBehaviour
 
   void FixedUpdate()
   {
-    Vector2 move = new Vector2(horizontal, vertical);
-    if (move.magnitude > 1)
-    {
-      move = move.normalized;
-    }
-    move = move * movementSpeed[currentMovementType];
-    body.velocity = move;
+    Vector3 move = new Vector3(horizontal, vertical, 0);
+    move = move.normalized * movementSpeed[currentMovementType];
+    body.MovePosition(transform.position + move * Time.deltaTime);
   }
 }
