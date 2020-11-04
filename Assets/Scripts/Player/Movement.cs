@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using UnityEngine;
 
 namespace Moonshot.Player {
 
+	[RequireComponent(typeof(Rigidbody2D))]
 	public class Movement : MonoBehaviour {
 		enum MovementType {
 			SNEAK = 1,
