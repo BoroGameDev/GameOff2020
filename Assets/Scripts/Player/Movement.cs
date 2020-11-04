@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Moonshot.Player {
 
 	[RequireComponent(typeof(Rigidbody2D))]
+	[RequireComponent(typeof(BaseInput))]
 	public class Movement : MonoBehaviour {
 		enum MovementType {
 			SNEAK = 1,
@@ -15,9 +16,8 @@ namespace Moonshot.Player {
 		[SerializeField]
 		private float Speed = 4f;
 
+		private BaseInput input;
 		private Rigidbody2D body;
-		private float horizontal;
-		private float vertical;
 
 		private MovementType currentMovementType = MovementType.WALK;
 		private Dictionary<MovementType, float> movementSpeedModifier = new Dictionary<MovementType, float>() {
@@ -28,15 +28,13 @@ namespace Moonshot.Player {
 
 		void Start() {
 			body = GetComponent<Rigidbody2D>();
+			input = GetComponent<BaseInput>();
 		}
 
 		void Update() {
-			horizontal = Input.GetAxisRaw("Horizontal");
-			vertical = Input.GetAxisRaw("Vertical");
-
-			if (Input.GetButton("Sneak")) {
+			if (input.Sneak) {
 				currentMovementType = MovementType.SNEAK;
-			} else if (Input.GetButton("Run")) {
+			} else if (input.Run) {
 				currentMovementType = MovementType.RUN;
 			} else {
 				currentMovementType = MovementType.WALK;
@@ -44,13 +42,13 @@ namespace Moonshot.Player {
 		}
 
 		void FixedUpdate() {
-			if (horizontal != 0 || vertical != 0) { 
+			if (input.Horizontal != 0f || input.Vertical != 0) { 
 				MoveCharacter();
 			}
 		}
 
 		public void MoveCharacter() { 
-			Vector3 move = new Vector3(horizontal, vertical, 0);
+			Vector3 move = new Vector3(input.Horizontal, input.Vertical, 0);
 			move = move.normalized * Speed * movementSpeedModifier[currentMovementType];
 			body.MovePosition(transform.position + move * Time.deltaTime);
 		}
