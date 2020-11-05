@@ -34,5 +34,12 @@ namespace Moonshot.GameManagement {
 				onDialogueEnded();
 			}
 		}
+
+		public event Action<SceneIndexes> onSceneLoaded;
+		public void SceneLoaded(SceneIndexes _index) {
+			if (onSceneLoaded != null) {
+				onSceneLoaded(_index);
+			}
+		}
 	}
 }
