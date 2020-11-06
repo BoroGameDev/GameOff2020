@@ -9,6 +9,7 @@ namespace Moonshot.Player {
 		protected float vertical = 0f;
 		protected bool sneak = false;
 		protected bool run = false;
+		protected bool interact = false;
 		#endregion
 
 		#region Properties
@@ -16,6 +17,7 @@ namespace Moonshot.Player {
 		public float Vertical { get { return vertical; } }
 		public bool Sneak { get { return sneak; } }
 		public bool Run { get { return run; } }
+		public bool Interact { get { return interact; } }
 		#endregion
 
 		#region Built-In Methods
@@ -30,6 +32,7 @@ namespace Moonshot.Player {
 			vertical = Input.GetAxisRaw("Vertical");
 			sneak = Input.GetButton("Sneak");
 			run = Input.GetButton("Run");
+			interact = Input.GetButton("Fire1");
 		}
 		#endregion
 
