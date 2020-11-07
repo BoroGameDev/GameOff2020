@@ -21,6 +21,8 @@ namespace Moonshot.GameManagement {
 		}
 		#endregion
 
+		public GameObject Player { get; private set; }
+
 		[SerializeField] private GameObject LoadingScreen;
 		[SerializeField] private ProgressBar m_ProgressBar;
 
@@ -29,11 +31,14 @@ namespace Moonshot.GameManagement {
 
 		#region Unity Methods
 		private void Start() {
-			SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive);
+			//SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive);
 		}
 		#endregion
 
 		#region Custom Methods
+		public void SetPlayer(GameObject _player) {
+			Player = _player;
+		}
 		public void LoadGame() {
 			LoadingScreen.SetActive(true);
 
