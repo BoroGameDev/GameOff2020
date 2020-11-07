@@ -29,6 +29,8 @@ namespace Moonshot.Player {
 		void Start() {
 			body = GetComponent<Rigidbody2D>();
 			input = GetComponent<BaseInput>();
+
+			body.freezeRotation = true;
 		}
 
 		void Update() {
@@ -42,12 +44,12 @@ namespace Moonshot.Player {
 		}
 
 		void FixedUpdate() {
-			if (input.Horizontal != 0f || input.Vertical != 0) { 
+			if (input.Horizontal != 0f || input.Vertical != 0) {
 				MoveCharacter();
 			}
 		}
 
-		public void MoveCharacter() { 
+		public void MoveCharacter() {
 			Vector3 move = new Vector3(input.Horizontal, input.Vertical, 0);
 			move = move.normalized * Speed * movementSpeedModifier[currentMovementType];
 			body.MovePosition(transform.position + move * Time.deltaTime);

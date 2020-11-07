@@ -44,6 +44,7 @@ ExportedObj/
 *.opendb
 *.VC.db
 *.vscode
+omnisharp.json
 
 # Unity3D generated meta files
 *.pidb.meta
