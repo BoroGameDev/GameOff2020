@@ -3,10 +3,8 @@ using UnityEngine;
 
 namespace Moonshot.Quests {
 
-	[CreateAssetMenu(menuName = "Quest")]
-	public class Quest : ScriptableObject {
+	public class Quest {
 		public List<QuestEvent> events = new List<QuestEvent>();
-		List<QuestEvent> paths = new List<QuestEvent>();
 
 		public Quest() { }
 

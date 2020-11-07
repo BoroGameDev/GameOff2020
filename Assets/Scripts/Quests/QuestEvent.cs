@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using System;
-using UnityEngine;
-using TMPro;
 
 namespace Moonshot.Quests {
 
@@ -30,7 +27,7 @@ namespace Moonshot.Quests {
 		#endregion
 
 		public QuestEvent(string _name, string _description) {
-			id = Guid.NewGuid().ToString();
+			id = System.Guid.NewGuid().ToString();
 			name = _name;
 			description = _description;
 			status = EventStatus.WAITING;

@@ -2,6 +2,20 @@
 
 namespace Moonshot.Quests {
 	public class Manager : MonoBehaviour {
+		#region Singleton
+		public static Manager Instance { get; private set; }
+
+		void Awake() {
+			if (Instance == null) {
+				Instance = this;
+				DontDestroyOnLoad(gameObject);
+			} else {
+				DestroyImmediate(gameObject);
+				return;
+			}
+		}
+		#endregion
+
 		public Quest testQuest = new Quest();
 
 		private void Start() {
