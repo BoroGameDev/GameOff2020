@@ -102,11 +102,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d21dcc2386d650c4597f3633c75a1f98, type: 3}
-<<<<<<< HEAD
   m_Name: Animation
-=======
-  m_Name: Animation Track
->>>>>>> Add initial cutscene and singleton for managing cutscenes
   m_EditorClassIdentifier: 
   m_Version: 3
   m_AnimClip: {fileID: 0}
@@ -649,11 +645,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d21dcc2386d650c4597f3633c75a1f98, type: 3}
-<<<<<<< HEAD
   m_Name: Movement
-=======
-  m_Name: Animation Track (1)
->>>>>>> Add initial cutscene and singleton for managing cutscenes
   m_EditorClassIdentifier: 
   m_Version: 3
   m_AnimClip: {fileID: 0}
@@ -790,15 +782,9 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-<<<<<<< HEAD
         value: {x: -6.5, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 14.3, y: 0, z: 0}
-=======
-        value: {x: 0.65, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
->>>>>>> Add initial cutscene and singleton for managing cutscenes
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -806,7 +792,6 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.5
         value: {x: 0.65, y: 0, z: 0}
-<<<<<<< HEAD
         inSlope: {x: 14.3, y: -0, z: -0}
         outSlope: {x: -429.00043, y: 0, z: 0}
         tangentMode: 0
@@ -818,23 +803,14 @@ AnimationClip:
         value: {x: -6.5, y: 0, z: 0}
         inSlope: {x: -429.00043, y: -0, z: -0}
         outSlope: {x: 4.3820224, y: 0, z: 0}
-=======
-        inSlope: {x: -0, y: -0, z: -0}
-        outSlope: {x: 3.8999999, y: 0, z: 0}
->>>>>>> Add initial cutscene and singleton for managing cutscenes
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 2
-<<<<<<< HEAD
         value: {x: 0, y: 0, z: 0}
         inSlope: {x: 4.3820224, y: -0, z: -0}
-=======
-        value: {x: 6.5, y: 0, z: 0}
-        inSlope: {x: 3.8999999, y: -0, z: -0}
->>>>>>> Add initial cutscene and singleton for managing cutscenes
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
@@ -888,15 +864,9 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-<<<<<<< HEAD
         value: -6.5
         inSlope: 0
         outSlope: 14.3
-=======
-        value: 0.65
-        inSlope: 0
-        outSlope: 0
->>>>>>> Add initial cutscene and singleton for managing cutscenes
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
@@ -904,7 +874,6 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.5
         value: 0.65
-<<<<<<< HEAD
         inSlope: 14.3
         outSlope: -429.00043
         tangentMode: 69
@@ -916,23 +885,14 @@ AnimationClip:
         value: -6.5
         inSlope: -429.00043
         outSlope: 4.3820224
-=======
-        inSlope: -0
-        outSlope: 3.8999999
->>>>>>> Add initial cutscene and singleton for managing cutscenes
         tangentMode: 69
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 2
-<<<<<<< HEAD
         value: 0
         inSlope: 4.3820224
-=======
-        value: 6.5
-        inSlope: 3.8999999
->>>>>>> Add initial cutscene and singleton for managing cutscenes
         outSlope: 0
         tangentMode: 69
         weightedMode: 0
@@ -967,7 +927,6 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-<<<<<<< HEAD
         time: 0.51666665
         value: 0
         inSlope: -0
@@ -977,8 +936,6 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-=======
->>>>>>> Add initial cutscene and singleton for managing cutscenes
         time: 2
         value: 0
         inSlope: -0
@@ -1016,7 +973,6 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-<<<<<<< HEAD
         time: 0.51666665
         value: 0
         inSlope: -0
@@ -1026,8 +982,6 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-=======
->>>>>>> Add initial cutscene and singleton for managing cutscenes
         time: 2
         value: 0
         inSlope: -0
