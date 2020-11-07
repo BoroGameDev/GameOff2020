@@ -419,7 +419,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4391bfa826f4baba6ed18fcfa19de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentInteractable: {fileID: 0}
+  radius: 3
+  InteractablesLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &425937099
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,7 +434,7 @@ GameObject:
   - component: {fileID: 425937101}
   - component: {fileID: 425937100}
   - component: {fileID: 425937103}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Item
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -584,7 +587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1395565875}
   - component: {fileID: 1395565876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -661,7 +664,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1550088483}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: COLLIDERS
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -694,7 +697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1738992272}
   - component: {fileID: 1738992273}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Interactable
   m_Icon: {fileID: 0}

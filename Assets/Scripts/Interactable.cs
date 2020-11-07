@@ -6,9 +6,4 @@ public class Interactable : MonoBehaviour {
 	public virtual void Interact() {
 		Debug.Log("Interaction not implemented");
 	}
-
-	void OnDrawGizmosSelected() {
-		Gizmos.color = Color.yellow;
-		Gizmos.DrawWireSphere(transform.position, radius);
-	}
 }
