@@ -4,7 +4,7 @@ namespace Moonshot.Quests {
 
 	public enum EventStatus { WAITING, CURRENT, DONE }
 
-	public class QuestEvent {
+	public class BaseEvent {
 		#region Variables
 		private string id;
 		private string name;
@@ -26,7 +26,7 @@ namespace Moonshot.Quests {
 		}
 		#endregion
 
-		public QuestEvent(string _name, string _description) {
+		public BaseEvent(string _name, string _description) {
 			id = System.Guid.NewGuid().ToString();
 			name = _name;
 			description = _description;

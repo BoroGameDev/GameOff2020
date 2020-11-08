@@ -15,7 +15,7 @@ namespace Moonshot.UI.Quests {
 		}
 
 		private void LateUpdate() {
-			if (destination == null) {
+			if (destination == null || player == null) {
 				indicator.SetActive(false);
 				return;
 			}

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Moonshot.Player {
 
 	public class Controller : MonoBehaviour {
-		private void Awake() {
+		private void Start() {
 			GameManager.Instance.SetPlayer(gameObject);
 		}
 	}

@@ -1,9 +1,9 @@
 ﻿namespace Moonshot.Quests {
 	public class Path {
-		public QuestEvent startEvent;
-		public QuestEvent endEvent;
+		public BaseEvent startEvent;
+		public BaseEvent endEvent;
 
-		public Path(QuestEvent _from, QuestEvent _to) {
+		public Path(BaseEvent _from, BaseEvent _to) {
 			startEvent = _from;
 			endEvent = _to;
 		}

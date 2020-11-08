@@ -16,14 +16,14 @@ namespace Moonshot.Quests {
 		}
 		#endregion
 
-		public Quest testQuest = new Quest();
+		public Quest testQuest = new Quest("Collecting Moonstone");
 
 		private void Start() {
-			QuestEvent a = testQuest.AddEvent("Discover Moonlight Mine", "You remember stories of moonlight cave from your childhood.");
-			QuestEvent b = testQuest.AddEvent("Jump down shaft", "From what you remember it shouldn't be too deep.");
-			QuestEvent c = testQuest.AddEvent("Find another route", "Maybe it's not worth the jump afterall...");
-			QuestEvent d = testQuest.AddEvent("Discover Mine", "Moonstone should be in the mine right?");
-			QuestEvent e = testQuest.AddEvent("Collect moonstone ore", "This is hard enough to withstand impact with the moon!");
+			BaseEvent a = testQuest.AddEvent("Discover Moonlight Mine", "You remember stories of moonlight cave from your childhood.");
+			BaseEvent b = testQuest.AddEvent("Jump down shaft", "From what you remember it shouldn't be too deep.");
+			BaseEvent c = testQuest.AddEvent("Find another route", "Maybe it's not worth the jump afterall...");
+			BaseEvent d = testQuest.AddEvent("Discover Mine", "Moonstone should be in the mine right?");
+			BaseEvent e = testQuest.AddEvent("Collect moonstone ore", "This is hard enough to withstand impact with the moon!");
 
 			testQuest.AddPath(a.Id, b.Id);
 			testQuest.AddPath(a.Id, c.Id);

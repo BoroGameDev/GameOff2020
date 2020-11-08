@@ -1,22 +1,31 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Moonshot.Quests {
 
 	public class Quest {
-		public List<QuestEvent> events = new List<QuestEvent>();
+		public string title = "Quest";
+		public List<BaseEvent> events = new List<BaseEvent>();
+		public bool completed;
 
-		public Quest() { }
+		public Quest(string _title) {
+			this.title = _title;
+		}
 
-		public QuestEvent AddEvent(string _name, string _description) {
-			QuestEvent e = new QuestEvent(_name, _description);
+		public void CheckEvents() {
+			completed = events.All(evt => evt.Status == EventStatus.DONE);
+		}
+
+		public BaseEvent AddEvent(string _name, string _description) {
+			BaseEvent e = new BaseEvent(_name, _description);
 			events.Add(e);
 			return e;
 		}
 
 		public void AddPath(string fromEventId, string toEventId) {
-			QuestEvent from = FindEventById(fromEventId);
-			QuestEvent to = FindEventById(toEventId);
+			BaseEvent from = FindEventById(fromEventId);
+			BaseEvent to = FindEventById(toEventId);
 
 			if (from == null || to == null) { return; }
 
@@ -24,8 +33,8 @@ namespace Moonshot.Quests {
 			from.Paths.Add(p);
 		}
 
-		public QuestEvent FindEventById(string eventId) {
-			foreach (QuestEvent e in events) {
+		public BaseEvent FindEventById(string eventId) {
+			foreach (BaseEvent e in events) {
 				if (e.Id == eventId) {
 					return e;
 				}
@@ -35,7 +44,7 @@ namespace Moonshot.Quests {
 		}
 
 		public void BFS(string _id, int _orderNumber = 1) {
-			QuestEvent thisEvent = FindEventById(_id);
+			BaseEvent thisEvent = FindEventById(_id);
 			thisEvent.Order = _orderNumber;
 
 			foreach (Path p in thisEvent.Paths) {
@@ -46,7 +55,8 @@ namespace Moonshot.Quests {
 		}
 
 		public void PrintPath() {
-			foreach (QuestEvent e in events) {
+			Debug.Log($"Quest: {title}");
+			foreach (BaseEvent e in events) {
 				Debug.Log($"{e.Name}:  {e.Order}");
 			}
 		}
