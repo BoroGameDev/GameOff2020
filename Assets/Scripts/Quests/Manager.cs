@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Moonshot.Items;
+
+using UnityEngine;
 
 namespace Moonshot.Quests {
 	public class Manager : MonoBehaviour {
@@ -16,22 +18,21 @@ namespace Moonshot.Quests {
 		}
 		#endregion
 
-		public Quest testQuest = new Quest("Collecting Moonstone");
+		public Quest testQuest = new Quest("Find Scrap Steel");
+		[SerializeField] private Item scrapSteelItem;
 
 		private void Start() {
-			BaseEvent a = testQuest.AddEvent("Discover Moonlight Mine", "You remember stories of moonlight cave from your childhood.");
-			BaseEvent b = testQuest.AddEvent("Jump down shaft", "From what you remember it shouldn't be too deep.");
-			BaseEvent c = testQuest.AddEvent("Find another route", "Maybe it's not worth the jump afterall...");
-			BaseEvent d = testQuest.AddEvent("Discover Mine", "Moonstone should be in the mine right?");
-			BaseEvent e = testQuest.AddEvent("Collect moonstone ore", "This is hard enough to withstand impact with the moon!");
+			BaseEvent a = testQuest.AddEvent("Go to junkyard", "You're pretty sure there's some useable steel in your junkyard.");
+			BaseEvent b = testQuest.AddEvent("Check Trashcans", "Not sure why there would be scrap steel in your trash cans but maybe?");
+			BaseEvent c = testQuest.AddCollectionEvent("Collect Scrap Steel", "10 pieces should be enough.", 10, scrapSteelItem);
+			BaseEvent d = testQuest.AddEvent("Drop off", "Drop off the scrap steel at the build site");
 
-			testQuest.AddPath(a.Id, b.Id);
 			testQuest.AddPath(a.Id, c.Id);
-			testQuest.AddPath(b.Id, d.Id);
+			testQuest.AddPath(b.Id, c.Id);
 			testQuest.AddPath(c.Id, d.Id);
-			testQuest.AddPath(d.Id, e.Id);
 
 			testQuest.BFS(a.Id);
+			testQuest.BFS(b.Id);
 
 			testQuest.PrintPath();
 		}

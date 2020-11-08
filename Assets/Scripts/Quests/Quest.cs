@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Moonshot.Items;
+
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -19,6 +21,12 @@ namespace Moonshot.Quests {
 
 		public BaseEvent AddEvent(string _name, string _description) {
 			BaseEvent e = new BaseEvent(_name, _description);
+			events.Add(e);
+			return e;
+		}
+
+		public CollectionEvent AddCollectionEvent(string _name, string _description, int _requiredAmount, Item _item) {
+			CollectionEvent e = new CollectionEvent(_name, _description, _requiredAmount, _item);
 			events.Add(e);
 			return e;
 		}
@@ -48,6 +56,7 @@ namespace Moonshot.Quests {
 			thisEvent.Order = _orderNumber;
 
 			foreach (Path p in thisEvent.Paths) {
+				Debug.Log(p.endEvent.Order);
 				if (p.endEvent.Order == -1) {
 					BFS(p.endEvent.Id, _orderNumber + 1);
 				}
