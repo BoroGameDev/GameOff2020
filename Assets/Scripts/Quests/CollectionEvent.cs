@@ -21,7 +21,7 @@ namespace Moonshot.Quests {
 		}
 
 		protected void CheckNewItem() {
-			List<Item> matchedItems = (List<Item>)Inventory.Instance.items.Where(i => i == item);
+			List<Item> matchedItems = Inventory.Instance.items.Where<Item>(i => i == item).ToList<Item>();
 
 			CurrentAmount = matchedItems.Count;
 
