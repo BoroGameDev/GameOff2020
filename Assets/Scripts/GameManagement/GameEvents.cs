@@ -41,5 +41,12 @@ namespace Moonshot.GameManagement {
 				onSceneLoaded(_index);
 			}
 		}
+
+		public event Action onInventoryUpdated;
+		public void InventoryUpdated() {
+			if (onInventoryUpdated != null) {
+				onInventoryUpdated();
+			}
+		}
 	}
 }

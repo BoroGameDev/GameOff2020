@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Moonshot.Items;
 using System.Collections.Generic;
+using Moonshot.GameManagement;
 
 namespace Moonshot.Inventories {
 	public class Inventory : MonoBehaviour {
@@ -18,9 +19,6 @@ namespace Moonshot.Inventories {
 		}
 		#endregion
 
-		public delegate void OnItemChanged();
-		public OnItemChanged onItemChangedCallback;
-
 		public int space = 10;
 		public List<Item> items = new List<Item>();
 
@@ -30,18 +28,12 @@ namespace Moonshot.Inventories {
 			}
 
 			items.Add(_item);
-
-			if (onItemChangedCallback != null) {
-				onItemChangedCallback.Invoke();
-			}
+			GameEvents.Instance.InventoryUpdated();
 		}
 
 		public void Remove(Item _item) {
 			items.Remove(_item);
-
-			if (onItemChangedCallback != null) {
-				onItemChangedCallback.Invoke();
-			}
+			GameEvents.Instance.InventoryUpdated();
 		}
 	}
 }

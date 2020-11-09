@@ -1,4 +1,5 @@
-﻿using Moonshot.Inventories;
+﻿using Moonshot.GameManagement;
+using Moonshot.Inventories;
 using Moonshot.Items;
 
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Moonshot.Quests {
 			RequiredAmount = _requiredAmount;
 			item = _item;
 
-			Inventory.Instance.onItemChangedCallback += CheckNewItem;
+			GameEvents.Instance.onInventoryUpdated += CheckNewItem;
 		}
 
 		protected void CheckNewItem() {
@@ -24,9 +25,13 @@ namespace Moonshot.Quests {
 
 			CurrentAmount = matchedItems.Count;
 
-			if (CurrentAmount >= RequiredAmount) {
+			if (IsRequirementSatisfied()) {
 				this.UpdateEvent(EventStatus.DONE);
 			}
+		}
+
+		protected override bool IsRequirementSatisfied() {
+			return CurrentAmount >= RequiredAmount;
 		}
 	}
 }

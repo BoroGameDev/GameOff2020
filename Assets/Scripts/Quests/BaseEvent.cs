@@ -21,6 +21,10 @@ namespace Moonshot.Quests {
 			Status = EventStatus.WAITING;
 		}
 
+		protected virtual bool IsRequirementSatisfied() {
+			return Status == EventStatus.DONE;
+		}
+
 		public void UpdateEvent(EventStatus _status) {
 			Status = _status;
 		}
