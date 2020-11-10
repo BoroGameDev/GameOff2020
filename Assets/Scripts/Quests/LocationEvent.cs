@@ -15,6 +15,7 @@ namespace Moonshot.Quests {
 		}
 
 		protected void CheckEnteredLocation(Location _location) {
+			if (Status != EventStatus.CURRENT) { return; }
 			if (_location == location) {
 				Debug.Log($"Completed Quest Event: {location.Name}");
 				this.UpdateEvent(EventStatus.DONE);

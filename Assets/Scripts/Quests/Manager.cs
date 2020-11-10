@@ -1,6 +1,9 @@
 ﻿using Moonshot.Items;
 using Moonshot.Locations;
 
+using System;
+using System.Collections;
+
 using UnityEngine;
 
 namespace Moonshot.Quests {
@@ -36,7 +39,16 @@ namespace Moonshot.Quests {
 			testQuest.BFS(a.Id);
 			testQuest.BFS(b.Id);
 
-			testQuest.PrintPath();
+			a.UpdateEvent(EventStatus.CURRENT);
+
+			StartCoroutine("PrintQuest");
+		}
+
+		private IEnumerator PrintQuest() { 
+			while (true) {
+				testQuest.PrintPath();
+				yield return new WaitForSeconds(3f);
+			}
 		}
 	}
 }

@@ -63,7 +63,6 @@ namespace Moonshot.Quests {
 			thisEvent.Order = _orderNumber;
 
 			foreach (Path p in thisEvent.Paths) {
-				Debug.Log(p.endEvent.Order);
 				if (p.endEvent.Order == -1) {
 					BFS(p.endEvent.Id, _orderNumber + 1);
 				}
@@ -73,7 +72,7 @@ namespace Moonshot.Quests {
 		public void PrintPath() {
 			Debug.Log($"Quest: {title}");
 			foreach (BaseEvent e in events) {
-				Debug.Log($"{e.Name}:  {e.Order}");
+				Debug.Log($"{e.Name}:  {e.Order} {e.Status}");
 			}
 		}
 	}

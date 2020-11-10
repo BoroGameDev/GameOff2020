@@ -5,6 +5,8 @@ using Moonshot.Items;
 using System.Collections.Generic;
 using System.Linq;
 
+using UnityEngine;
+
 namespace Moonshot.Quests {
 	public class CollectionEvent : BaseEvent {
 
@@ -21,9 +23,13 @@ namespace Moonshot.Quests {
 		}
 
 		protected void CheckNewItem() {
+			//if (Status != EventStatus.CURRENT) { return; }
+
 			List<Item> matchedItems = Inventory.Instance.items.Where<Item>(i => i == item).ToList<Item>();
 
 			CurrentAmount = matchedItems.Count;
+
+			Debug.Log($"{item.name}: {CurrentAmount}/{RequiredAmount}");
 
 			if (IsRequirementSatisfied()) {
 				this.UpdateEvent(EventStatus.DONE);
