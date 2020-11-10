@@ -21,11 +21,17 @@ namespace Moonshot.GameManagement {
 		}
 		#endregion
 
-		// This is an example event... delete when you make a real one
-		public event Action onEvent;
-		public void Event() {
-			if (onEvent != null) {
-				onEvent();
+		public event Action onDialogueStarted;
+		public void DialogueStarted() {
+			if (onDialogueStarted != null) {
+				onDialogueStarted();
+			}
+		}
+
+		public event Action onDialogueEnded;
+		public void DialogueEnded() {
+			if (onDialogueEnded != null) {
+				onDialogueEnded();
 			}
 		}
 	}

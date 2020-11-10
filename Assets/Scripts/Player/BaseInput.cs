@@ -32,7 +32,7 @@ namespace Moonshot.Player {
 			vertical = Input.GetAxisRaw("Vertical");
 			sneak = Input.GetButton("Sneak");
 			run = Input.GetButton("Run");
-			interact = Input.GetButtonDown("Fire1");
+			interact = Input.GetButtonDown("Interact");
 		}
 		#endregion
 
