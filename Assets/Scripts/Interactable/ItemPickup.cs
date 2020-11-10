@@ -15,8 +15,6 @@ namespace Moonshot.Interactables {
 		}
 
 		public override void Interact() {
-			base.Interact();
-
 			Pickup();
 		}
 

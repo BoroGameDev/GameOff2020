@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Moonshot.Locations;
+
+using System;
 
 namespace Moonshot.GameManagement {
 
@@ -46,6 +48,13 @@ namespace Moonshot.GameManagement {
 		public void InventoryUpdated() {
 			if (onInventoryUpdated != null) {
 				onInventoryUpdated();
+			}
+		}
+
+		public event Action<Location> onEnteredLocation;
+		public void EnteredLocation(Location _location) {
+			if (onEnteredLocation != null) {
+				onEnteredLocation(_location);
 			}
 		}
 	}

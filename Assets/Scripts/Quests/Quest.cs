@@ -1,4 +1,5 @@
 ﻿using Moonshot.Items;
+using Moonshot.Locations;
 
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,12 @@ namespace Moonshot.Quests {
 
 		public CollectionEvent AddCollectionEvent(string _name, string _description, int _requiredAmount, Item _item) {
 			CollectionEvent e = new CollectionEvent(_name, _description, _requiredAmount, _item);
+			events.Add(e);
+			return e;
+		}
+
+		public LocationEvent AddLocationEvent(string _name, string _description, Location _location) {
+			LocationEvent e = new LocationEvent(_name, _description, _location);
 			events.Add(e);
 			return e;
 		}

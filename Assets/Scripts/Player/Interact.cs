@@ -15,7 +15,6 @@ namespace Moonshot.Player {
 
 		void Update() {
 			if (input.Interact) {
-				Debug.Log("Interact!");
 				CheckHit();
 			}
 		}

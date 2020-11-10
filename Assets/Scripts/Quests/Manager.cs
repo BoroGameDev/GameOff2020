@@ -1,4 +1,5 @@
 ﻿using Moonshot.Items;
+using Moonshot.Locations;
 
 using UnityEngine;
 
@@ -20,9 +21,10 @@ namespace Moonshot.Quests {
 
 		public Quest testQuest = new Quest("Find Scrap Steel");
 		[SerializeField] private Item scrapSteelItem;
+		[SerializeField] private Location rockQuarryLocation;
 
 		private void Start() {
-			BaseEvent a = testQuest.AddEvent("Go to junkyard", "You're pretty sure there's some useable steel in your junkyard.");
+			BaseEvent a = testQuest.AddLocationEvent("Go to Rock Quarry", "You're pretty sure there's some useable steel in your junkyard.", rockQuarryLocation);
 			BaseEvent b = testQuest.AddEvent("Check Trashcans", "Not sure why there would be scrap steel in your trash cans but maybe?");
 			BaseEvent c = testQuest.AddCollectionEvent("Collect Scrap Steel", "10 pieces should be enough.", 10, scrapSteelItem);
 			BaseEvent d = testQuest.AddEvent("Drop off", "Drop off the scrap steel at the build site");
