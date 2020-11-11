@@ -10,21 +10,16 @@ public class DialogueManager : MonoBehaviour {
 	public Text nameText;
 	public Text dialogueText;
 	public Animator animator;
-	public Queue<string> sentences;
-	public static DialogueManager Instance;
-
-	void Awake() {
-		if (Instance == null) {
-			Instance = this;
-			DontDestroyOnLoad(gameObject);
-		} else {
-			DestroyImmediate(gameObject);
-			return;
-		}
-	}
+	public Queue<string> sentences = new Queue<string>();
+	private NPC npc;
 
 	void Start() {
-		sentences = new Queue<string>();
+		GameEvents.Instance.onDialogueStarted += DialogueStarted;
+	}
+
+	private void DialogueStarted(NPC _npc) {
+		npc = _npc;
+		StartDialogue();
 	}
 
 	public void StartDialogue(string name, Dialogue dialogue) {
@@ -37,7 +32,7 @@ public class DialogueManager : MonoBehaviour {
 
 		sentences.Clear();
 
-		foreach (string sentence in dialogue.sentences) {
+		foreach (string sentence in npc.dialogue.sentences) {
 			sentences.Enqueue(sentence);
 		}
 
@@ -68,6 +63,6 @@ public class DialogueManager : MonoBehaviour {
 
 	void EndDialogue() {
 		animator.SetBool("IsOpen", false);
-		GameEvents.Instance.DialogueEnded();
+		GameEvents.Instance.DialogueEnded(npc);
 	}
 }

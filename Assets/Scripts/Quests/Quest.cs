@@ -1,8 +1,7 @@
-﻿using Moonshot.Items;
-using Moonshot.Locations;
-
+﻿
 using System.Collections.Generic;
 using System.Linq;
+
 using UnityEngine;
 
 namespace Moonshot.Quests {
@@ -11,31 +10,27 @@ namespace Moonshot.Quests {
 		public string title = "Quest";
 		public List<BaseEvent> events = new List<BaseEvent>();
 		public bool completed;
+		public bool started;
 
 		public Quest(string _title) {
 			this.title = _title;
+		}
+
+		public void Start() {
+			List<BaseEvent> _events = events.Where<BaseEvent>(_e => _e.Order == 0).ToList<BaseEvent>();
+			foreach (BaseEvent _e in _events) {
+				_e.Start();
+			}
+			started = true;
 		}
 
 		public void CheckEvents() {
 			completed = events.All(evt => evt.Status == EventStatus.DONE);
 		}
 
-		public BaseEvent AddEvent(string _name, string _description) {
-			BaseEvent e = new BaseEvent(_name, _description);
-			events.Add(e);
-			return e;
-		}
-
-		public CollectionEvent AddCollectionEvent(string _name, string _description, int _requiredAmount, Item _item) {
-			CollectionEvent e = new CollectionEvent(_name, _description, _requiredAmount, _item);
-			events.Add(e);
-			return e;
-		}
-
-		public LocationEvent AddLocationEvent(string _name, string _description, Location _location) {
-			LocationEvent e = new LocationEvent(_name, _description, _location);
-			events.Add(e);
-			return e;
+		public BaseEvent AddEvent(BaseEvent _event) {
+			events.Add(_event);
+			return _event;
 		}
 
 		public void AddPath(string fromEventId, string toEventId) {
@@ -58,7 +53,7 @@ namespace Moonshot.Quests {
 			return null;
 		}
 
-		public void BFS(string _id, int _orderNumber = 1) {
+		public void BFS(string _id, int _orderNumber = 0) {
 			BaseEvent thisEvent = FindEventById(_id);
 			thisEvent.Order = _orderNumber;
 

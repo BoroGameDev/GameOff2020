@@ -23,17 +23,17 @@ namespace Moonshot.GameManagement {
     }
     #endregion
 
-    public event Action onDialogueStarted;
-    public void DialogueStarted() {
+    public event Action<NPC> onDialogueStarted;
+    public void DialogueStarted(NPC _npc) {
       if (onDialogueStarted != null) {
-        onDialogueStarted();
+        onDialogueStarted(_npc);
       }
     }
 
-		public event Action onDialogueEnded;
-		public void DialogueEnded() {
+		public event Action<NPC> onDialogueEnded;
+		public void DialogueEnded(NPC _npc) {
 			if (onDialogueEnded != null) {
-				onDialogueEnded();
+				onDialogueEnded(_npc);
 			}
 		}
 

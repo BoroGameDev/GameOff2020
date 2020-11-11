@@ -40,11 +40,11 @@ namespace Moonshot.Player {
 			anim.SetFloat("MoveY", move.y);
 		}
 
-		private void SetShouldAnimate() {
+		private void SetShouldAnimate(NPC _npc) {
 			shouldAnimate = true;
 		}
 
-		private void SetShouldNotAnimate() {
+		private void SetShouldNotAnimate(NPC _npc) {
 			shouldAnimate = false;
 		}
 	}

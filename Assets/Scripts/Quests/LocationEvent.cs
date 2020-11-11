@@ -8,7 +8,7 @@ namespace Moonshot.Quests {
 
 		public Location location { get; protected set; }
 
-		public LocationEvent(string _n, string _d, Location _location) : base(_n, _d) {
+		public LocationEvent(Quest _p, string _n, string _d, Location _location) : base(_p, _n, _d) {
 			location = _location;
 
 			GameEvents.Instance.onEnteredLocation += CheckEnteredLocation;

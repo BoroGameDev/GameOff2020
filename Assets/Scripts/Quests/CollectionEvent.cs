@@ -14,7 +14,7 @@ namespace Moonshot.Quests {
 		public int RequiredAmount { get; protected set; }
 		public Item item { get; protected set; }
 
-		public CollectionEvent(string _n, string _d, int _requiredAmount, Item _item) : base(_n, _d) {
+		public CollectionEvent(Quest _p, string _n, string _d, int _requiredAmount, Item _item) : base(_p, _n, _d) {
 			CurrentAmount = 0;
 			RequiredAmount = _requiredAmount;
 			item = _item;

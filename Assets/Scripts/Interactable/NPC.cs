@@ -1,5 +1,4 @@
 using Moonshot.GameManagement;
-using UnityEngine;
 
 public class NPC : Interactable {
 

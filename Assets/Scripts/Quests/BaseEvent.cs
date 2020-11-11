@@ -6,6 +6,7 @@ namespace Moonshot.Quests {
 
 	public class BaseEvent {
 
+		public Quest Parent { get; protected set; }
 		public string Id { get; protected set; }
 		public string Name { get; protected set; }
 		public string Description { get; protected set; }
@@ -13,7 +14,8 @@ namespace Moonshot.Quests {
 		public List<Path> Paths { get; protected set; }
 		public int Order = -1;
 
-		public BaseEvent(string _name, string _description) {
+		public BaseEvent(Quest _parent, string _name, string _description) {
+			Parent = _parent;
 			Id = System.Guid.NewGuid().ToString();
 			Name = _name;
 			Description = _description;
@@ -37,6 +39,7 @@ namespace Moonshot.Quests {
 					p.endEvent.Start();
 				}
 			}
+			Parent.CheckEvents();
 		}
 	}
 }

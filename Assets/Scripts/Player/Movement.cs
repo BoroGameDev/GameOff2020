@@ -67,11 +67,11 @@ namespace Moonshot.Player {
 			body.MovePosition(transform.position + move * Time.deltaTime);
 		}
 
-		private void SetMoveable() {
+		private void SetMoveable(NPC _npc) {
 			isMoveable = true;
 		}
 
-		private void SetUnmoveable() {
+		private void SetUnmoveable(NPC _npc) {
 			isMoveable = false;
 		}
 	}

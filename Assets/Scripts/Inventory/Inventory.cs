@@ -35,5 +35,9 @@ namespace Moonshot.Inventories {
 			items.Remove(_item);
 			GameEvents.Instance.InventoryUpdated();
 		}
+
+		public bool Contains(Item _item) {
+			return items.Contains(_item);
+		}
 	}
 }
