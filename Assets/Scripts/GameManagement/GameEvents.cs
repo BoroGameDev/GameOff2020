@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Moonshot.Locations;
+
+using System;
 
 namespace Moonshot.GameManagement {
 
@@ -28,18 +30,33 @@ namespace Moonshot.GameManagement {
       }
     }
 
-    public event Action onDialogueEnded;
-    public void DialogueEnded() {
-      if (onDialogueEnded != null) {
-        onDialogueEnded();
-      }
-    }
+		public event Action onDialogueEnded;
+		public void DialogueEnded() {
+			if (onDialogueEnded != null) {
+				onDialogueEnded();
+			}
+		}
 
-    public event Action<SceneIndexes> onSceneLoaded;
-    public void SceneLoaded(SceneIndexes _index) {
-      if (onSceneLoaded != null) {
-        onSceneLoaded(_index);
-      }
-    }
-  }
+		public event Action<SceneIndexes> onSceneLoaded;
+		public void SceneLoaded(SceneIndexes _index) {
+			if (onSceneLoaded != null) {
+				onSceneLoaded(_index);
+			}
+		}
+
+		public event Action onInventoryUpdated;
+		public void InventoryUpdated() {
+			if (onInventoryUpdated != null) {
+				onInventoryUpdated();
+			}
+		}
+
+		public event Action<Location> onEnteredLocation;
+		public void EnteredLocation(Location _location) {
+			if (onEnteredLocation != null) {
+				onEnteredLocation(_location);
+			}
+		}
+    
+	}
 }
