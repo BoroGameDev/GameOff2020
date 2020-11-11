@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Moonshot.GameManagement;
 
 using UnityEngine;
 
@@ -25,12 +26,20 @@ namespace Moonshot.Player {
 			{MovementType.WALK, 1f},
 			{MovementType.RUN, 2f}
 		};
+		private bool isMoveable = true;
 
 		void Start() {
 			body = GetComponent<Rigidbody2D>();
 			input = GetComponent<BaseInput>();
+			GameEvents.Instance.onDialogueStarted += SetUnmoveable;
+			GameEvents.Instance.onDialogueEnded += SetMoveable;
 
 			body.freezeRotation = true;
+		}
+
+		void OnDestroy() {
+			GameEvents.Instance.onDialogueStarted -= SetUnmoveable;
+			GameEvents.Instance.onDialogueEnded -= SetMoveable;
 		}
 
 		void Update() {
@@ -50,9 +59,20 @@ namespace Moonshot.Player {
 		}
 
 		public void MoveCharacter() {
+			if (!isMoveable) {
+				return;
+			}
 			Vector3 move = new Vector3(input.Horizontal, input.Vertical, 0);
 			move = move.normalized * Speed * movementSpeedModifier[currentMovementType];
 			body.MovePosition(transform.position + move * Time.deltaTime);
+		}
+
+		private void SetMoveable() {
+			isMoveable = true;
+		}
+
+		private void SetUnmoveable() {
+			isMoveable = false;
 		}
 	}
 }

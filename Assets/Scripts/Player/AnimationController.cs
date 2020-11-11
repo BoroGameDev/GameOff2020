@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Moonshot.GameManagement;
+using UnityEngine;
 
 namespace Moonshot.Player {
 
@@ -8,22 +9,43 @@ namespace Moonshot.Player {
 
 		private BaseInput input;
 		private Animator anim;
+		private bool shouldAnimate = true;
 
 		private void Awake() {
 			input = GetComponent<BaseInput>();
 			anim = GetComponent<Animator>();
+
+			GameEvents.Instance.onDialogueStarted += SetShouldNotAnimate;
+			GameEvents.Instance.onDialogueEnded += SetShouldAnimate;
+		}
+
+		void OnDestroy() {
+			GameEvents.Instance.onDialogueStarted -= SetShouldNotAnimate;
+			GameEvents.Instance.onDialogueEnded -= SetShouldAnimate;
 		}
 
 		void Update() {
+			if (!shouldAnimate) {
+				return;
+			}
+
 			Vector2 move = new Vector2(input.Horizontal, input.Vertical);
 			anim.SetBool("Moving", move.magnitude != 0f);
 
 			if (move == Vector2.zero) {
-				return; 
+				return;
 			}
 
 			anim.SetFloat("MoveX", move.x);
 			anim.SetFloat("MoveY", move.y);
+		}
+
+		private void SetShouldAnimate() {
+			shouldAnimate = true;
+		}
+
+		private void SetShouldNotAnimate() {
+			shouldAnimate = false;
 		}
 	}
 }
