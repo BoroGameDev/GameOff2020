@@ -25,12 +25,16 @@ namespace Moonshot.Quests {
 			return Status == EventStatus.DONE;
 		}
 
+		public virtual void Start() { 
+			UpdateEvent(EventStatus.CURRENT);
+		}
+
 		public void UpdateEvent(EventStatus _status) {
 			Status = _status;
 
 			if (_status == EventStatus.DONE) {
 				foreach (Path p in Paths) {
-					p.endEvent.UpdateEvent(EventStatus.CURRENT);
+					p.endEvent.Start();
 				}
 			}
 		}

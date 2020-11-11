@@ -19,11 +19,17 @@ namespace Moonshot.Quests {
 			RequiredAmount = _requiredAmount;
 			item = _item;
 
-			GameEvents.Instance.onInventoryUpdated += CheckNewItem;
+			GameEvents.Instance.onInventoryUpdated += CheckItems;
 		}
 
-		protected void CheckNewItem() {
-			//if (Status != EventStatus.CURRENT) { return; }
+		public override void Start() {
+			base.Start();
+
+			CheckItems();
+		}
+
+		protected void CheckItems() {
+			if (Status != EventStatus.CURRENT) { return; }
 
 			List<Item> matchedItems = Inventory.Instance.items.Where<Item>(i => i == item).ToList<Item>();
 

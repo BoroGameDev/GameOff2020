@@ -39,7 +39,7 @@ namespace Moonshot.Quests {
 			testQuest.BFS(a.Id);
 			testQuest.BFS(b.Id);
 
-			a.UpdateEvent(EventStatus.CURRENT);
+			a.Start();
 
 			StartCoroutine("PrintQuest");
 		}
