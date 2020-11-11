@@ -29,7 +29,7 @@ namespace Moonshot.Quests {
 		private void Start() {
 			BaseEvent a = testQuest.AddLocationEvent("Go to Rock Quarry", "You're pretty sure there's some useable steel in your junkyard.", rockQuarryLocation);
 			BaseEvent b = testQuest.AddEvent("Check Trashcans", "Not sure why there would be scrap steel in your trash cans but maybe?");
-			BaseEvent c = testQuest.AddCollectionEvent("Collect Scrap Steel", "10 pieces should be enough.", 10, scrapSteelItem);
+			BaseEvent c = testQuest.AddCollectionEvent("Collect Scrap Steel", "10 pieces should be enough.", 1, scrapSteelItem);
 			BaseEvent d = testQuest.AddEvent("Drop off", "Drop off the scrap steel at the build site");
 
 			testQuest.AddPath(a.Id, c.Id);

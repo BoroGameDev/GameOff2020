@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-[System.Serializable]
-public class Dialogue {
-	public string name;
+[CreateAssetMenu(fileName = "New Dialogue", menuName = "NPC/Dialogue")]
+public class Dialogue : ScriptableObject {
 	[TextArea(3, 10)]
 	public string[] sentences;
 }

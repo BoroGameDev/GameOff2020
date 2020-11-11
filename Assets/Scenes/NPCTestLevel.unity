@@ -580,12 +580,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 3
-  dialogue:
-    name: Kidney
-    sentences:
-    - Hi! Welcome to Bean Topia!
-    - Here you can interact with other beans and legumes alike.
-    - I will pop in ocassionally to make sure your journey is going A-Okay!
+  name: Kidney
+  dialogue: {fileID: 11400000, guid: 943954cbab2d5954b933931cea7f29b4, type: 2}
 --- !u!1 &464878536
 GameObject:
   m_ObjectHideFlags: 0
