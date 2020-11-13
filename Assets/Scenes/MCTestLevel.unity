@@ -7587,6 +7587,64 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &45004640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45004641}
+  - component: {fileID: 45004643}
+  - component: {fileID: 45004642}
+  m_Layer: 5
+  m_Name: QuestPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &45004641
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45004640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 274108678}
+  m_Father: {fileID: 1624061322}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &45004642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45004640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da26e4d6d1385834c8a653b9acce0137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!222 &45004643
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45004640}
+  m_CullTransparentMesh: 0
 --- !u!1 &68037508
 GameObject:
   m_ObjectHideFlags: 0
@@ -8072,12 +8130,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274108677}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 159964590}
-  m_Father: {fileID: 1624061322}
+  m_Father: {fileID: 45004641}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8471,11 +8529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c60ed763f2e4f49bcfd07fa60c6fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrapSteelItem: {fileID: 11400000, guid: f860ed9a04d775f42b13c1e96f091d76, type: 2}
-  rockQuarryLocation: {fileID: 11400000, guid: 6eefb3b9b88e44847b702ceb98e37a06, type: 2}
+  testQuest: {fileID: 11400000, guid: 31f7a3eec42bac9409ae43754aaf45c7, type: 2}
   OldMan: {fileID: 1152136869}
-  successDialogue: {fileID: 11400000, guid: e34c3660232014e4ebfe386463f27101, type: 2}
-  failDialogue: {fileID: 11400000, guid: 8c54f68054ea98745881b37b94959b5d, type: 2}
 --- !u!4 &900020813
 Transform:
   m_ObjectHideFlags: 0
@@ -9113,7 +9168,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 274108678}
+  - {fileID: 45004641}
   - {fileID: 1301932644}
   m_Father: {fileID: 0}
   m_RootOrder: 8

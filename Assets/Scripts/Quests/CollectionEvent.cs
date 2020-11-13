@@ -8,17 +8,14 @@ using System.Linq;
 using UnityEngine;
 
 namespace Moonshot.Quests {
+	[CreateAssetMenu(fileName = "New Collection Event", menuName = "Quests/Collection Event")]
 	public class CollectionEvent : BaseEvent {
 
-		public int CurrentAmount { get; protected set; }
-		public int RequiredAmount { get; protected set; }
-		public Item item { get; protected set; }
+		[HideInInspector] public int CurrentAmount = 0;
+		public int RequiredAmount = 1;
+		public Item item;
 
-		public CollectionEvent(Quest _p, string _n, string _d, int _requiredAmount, Item _item) : base(_p, _n, _d) {
-			CurrentAmount = 0;
-			RequiredAmount = _requiredAmount;
-			item = _item;
-
+		public override void Init() {
 			GameEvents.Instance.onInventoryUpdated += CheckItems;
 		}
 

@@ -6,14 +6,18 @@ using UnityEngine;
 
 namespace Moonshot.Quests {
 
-	public class Quest {
+	[CreateAssetMenu(fileName = "New Quest", menuName = "Quests/Quest")]
+	public class Quest : ScriptableObject {
 		public string title = "Quest";
 		public List<BaseEvent> events = new List<BaseEvent>();
 		public bool completed;
 		public bool started;
 
-		public Quest(string _title) {
-			this.title = _title;
+		public void Init() {
+			foreach (BaseEvent _e in events) { 
+				_e.Parent = this;
+				_e.Init();
+			}
 		}
 
 		public void Start() {

@@ -1,26 +1,25 @@
 ﻿using System.Collections.Generic;
 
+using UnityEngine;
+
 namespace Moonshot.Quests {
 
 	public enum EventStatus { WAITING, CURRENT, DONE }
 
-	public class BaseEvent {
 
-		public Quest Parent { get; protected set; }
+	[CreateAssetMenu(fileName = "New Quest Event", menuName = "Quests/Event")]
+	public class BaseEvent : ScriptableObject {
+
+		[HideInInspector] public Quest Parent;
 		public string Id { get; protected set; }
-		public string Name { get; protected set; }
-		public string Description { get; protected set; }
-		public EventStatus Status { get; protected set; }
-		public List<Path> Paths { get; protected set; }
-		public int Order = -1;
+		public string Name;
+		public string Description;
+		public EventStatus Status = EventStatus.WAITING;
+		public List<Path> Paths = new List<Path>();
+		[HideInInspector] public int Order = -1;
 
-		public BaseEvent(Quest _parent, string _name, string _description) {
-			Parent = _parent;
+		public virtual void Init() {
 			Id = System.Guid.NewGuid().ToString();
-			Name = _name;
-			Description = _description;
-			Paths = new List<Path>();
-			Status = EventStatus.WAITING;
 		}
 
 		protected virtual bool IsRequirementSatisfied() {

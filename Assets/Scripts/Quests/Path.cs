@@ -1,4 +1,5 @@
 ﻿namespace Moonshot.Quests {
+	[System.Serializable]
 	public class Path {
 		public BaseEvent startEvent;
 		public BaseEvent endEvent;

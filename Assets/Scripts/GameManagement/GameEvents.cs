@@ -4,31 +4,31 @@ using System;
 
 namespace Moonshot.GameManagement {
 
-  public class GameEvents {
-    #region Singleton
-    private static GameEvents instance = null;
-    private static readonly object padlock = new object();
+	public class GameEvents {
+		#region Singleton
+		private static GameEvents instance = null;
+		private static readonly object padlock = new object();
 
-    GameEvents() { }
+		GameEvents() { }
 
-    public static GameEvents Instance {
-      get {
-        lock (padlock) {
-          if (instance == null) {
-            instance = new GameEvents();
-          }
-          return instance;
-        }
-      }
-    }
-    #endregion
+		public static GameEvents Instance {
+			get {
+				lock (padlock) {
+					if (instance == null) {
+						instance = new GameEvents();
+					}
+					return instance;
+				}
+			}
+		}
+		#endregion
 
-    public event Action<NPC> onDialogueStarted;
-    public void DialogueStarted(NPC _npc) {
-      if (onDialogueStarted != null) {
-        onDialogueStarted(_npc);
-      }
-    }
+		public event Action<NPC> onDialogueStarted;
+		public void DialogueStarted(NPC _npc) {
+			if (onDialogueStarted != null) {
+				onDialogueStarted(_npc);
+			}
+		}
 
 		public event Action<NPC> onDialogueEnded;
 		public void DialogueEnded(NPC _npc) {
@@ -57,6 +57,13 @@ namespace Moonshot.GameManagement {
 				onEnteredLocation(_location);
 			}
 		}
-    
+
+		public event Action onQuestEventCompleted;
+		public void QuestEventCompleted() {
+			if (onQuestEventCompleted != null) {
+				onQuestEventCompleted();
+			}
+		}
+
 	}
 }

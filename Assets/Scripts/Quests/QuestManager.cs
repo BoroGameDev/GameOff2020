@@ -25,29 +25,19 @@ namespace Moonshot.Quests {
 		}
 		#endregion
 
-		public Quest testQuest = new Quest("Find Frame");
-		[Header("Quest Items")]
-		[SerializeField] private Item scrapSteelItem;
-		[Header("Quest Locations")]
-		[SerializeField] private Location rockQuarryLocation;
-
-		[Header("Quest Dialogue")]
+		public Quest testQuest;
 		[SerializeField] private NPC OldMan;
-
-		[SerializeField] private Dialogue successDialogue;
-		[SerializeField] private Dialogue failDialogue;
 
 		private bool questStarted = false;
 
 		private void SetupQuest() {
-			BaseEvent a = testQuest.AddEvent(new LocationEvent(testQuest, "Visit the grass patch", "", rockQuarryLocation));
-			BaseEvent b = testQuest.AddEvent(new CollectionEvent(testQuest, "Collect Frame", "You should be able to find the useable frame in one of those cars", 1, scrapSteelItem));
-			BaseEvent c = testQuest.AddEvent(new DeliveryEvent(testQuest, "Drop off", "Drop off the scrap steel at the build site", scrapSteelItem, OldMan, successDialogue, failDialogue));
+			testQuest.Init();
+			testQuest.BFS(testQuest.events[0].Id);
 
-			testQuest.AddPath(a.Id, b.Id);
-			testQuest.AddPath(b.Id, c.Id);
-
-			testQuest.BFS(a.Id);
+			var deliveryEvents = testQuest.events.FindAll(_e => _e is DeliveryEvent);
+			foreach (DeliveryEvent _e in deliveryEvents) {
+				_e.npc = OldMan.GetComponent<NPC>();
+			}
 
 			GameEvents.Instance.onDialogueEnded += DialogueEnded;
 		}
@@ -59,6 +49,14 @@ namespace Moonshot.Quests {
 			testQuest.Start();
 			questStarted = true;
 			StartCoroutine("PrintQuest");
+		}
+
+		public Quest GetCurrentQuest() {
+			return testQuest;
+		}
+
+		public List<BaseEvent> GetCurrentEvents() {
+			return testQuest.events.FindAll(_e => _e.Status == EventStatus.CURRENT);
 		}
 
 		private IEnumerator PrintQuest() { 

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81b0c04f1d263c4b896e6e95712443a, type: 3}
+  m_Name: Return to Old Man River
+  m_EditorClassIdentifier: 
+  Name: Return Frame to Old Man River
+  Description: He wanted you to bring the frame!
+  Status: 0
+  Paths: []
+  Order: -1
+  npc: {fileID: 0}
+  item: {fileID: 11400000, guid: f860ed9a04d775f42b13c1e96f091d76, type: 2}
+  successDialogue: {fileID: 11400000, guid: e34c3660232014e4ebfe386463f27101, type: 2}
+  failDialogue: {fileID: 11400000, guid: 8c54f68054ea98745881b37b94959b5d, type: 2}

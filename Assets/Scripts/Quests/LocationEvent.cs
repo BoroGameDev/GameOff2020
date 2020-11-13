@@ -4,13 +4,12 @@ using Moonshot.Locations;
 using UnityEngine;
 
 namespace Moonshot.Quests {
+	[CreateAssetMenu(fileName = "New Location Event", menuName = "Quests/Location Event")]
 	public class LocationEvent : BaseEvent {
 
-		public Location location { get; protected set; }
+		public Location location;
 
-		public LocationEvent(Quest _p, string _n, string _d, Location _location) : base(_p, _n, _d) {
-			location = _location;
-
+		public override void Init() {
 			GameEvents.Instance.onEnteredLocation += CheckEnteredLocation;
 		}
 
