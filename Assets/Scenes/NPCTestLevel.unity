@@ -494,6 +494,7 @@ GameObject:
   - component: {fileID: 425937101}
   - component: {fileID: 425937100}
   - component: {fileID: 425937102}
+  - component: {fileID: 425937103}
   m_Layer: 8
   m_Name: NPC
   m_TagString: Interactable
@@ -579,9 +580,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18353866fb16b49cb8a141f8af8a44df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  interactableSprites:
+    Highlighted: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    Original: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   name: Kidney
   dialogue: {fileID: 11400000, guid: 943954cbab2d5954b933931cea7f29b4, type: 2}
+--- !u!58 &425937103
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425937099}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.08
 --- !u!1 &464878536
 GameObject:
   m_ObjectHideFlags: 0

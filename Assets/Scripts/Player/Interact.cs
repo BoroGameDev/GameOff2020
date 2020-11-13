@@ -30,9 +30,22 @@ namespace Moonshot.Player {
 		void HandleInteractions(Collider2D[] interactables) {
 			// TODO: will need to sort out which interactable to choose
 			Interactable interactable = interactables[0].GetComponentInParent<Interactable>();
-			Debug.Log("hit: " + interactable.name);
 			if (interactable) {
 				interactable.Interact();
+			}
+		}
+
+		void OnTriggerEnter2D(Collider2D other) {
+			Interactable interactable = other.GetComponentInParent<Interactable>();
+			if (interactable) {
+				interactable.Highlight();
+			}
+		}
+
+		void OnTriggerExit2D(Collider2D other) {
+			Interactable interactable = other.GetComponentInParent<Interactable>();
+			if (interactable) {
+				interactable.Unhighlight();
 			}
 		}
 	}
