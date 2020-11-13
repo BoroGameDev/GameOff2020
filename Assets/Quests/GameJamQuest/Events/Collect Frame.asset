@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597d73436a80ff94a9429b004b771719, type: 3}
   m_Name: Collect Frame
   m_EditorClassIdentifier: 
+  Parent: {fileID: 11400000, guid: 31f7a3eec42bac9409ae43754aaf45c7, type: 2}
   Name: Collect Frame
   Description: Salvage the Frame from a car
   Status: 0
   Paths:
   - startEvent: {fileID: 11400000}
     endEvent: {fileID: 11400000, guid: 821500bb412572d42afb75869bc7e8c2, type: 2}
-  Order: -1
-  CurrentAmount: 0
+  Order: 1
+  CurrentAmount: 1
   RequiredAmount: 1
   item: {fileID: 11400000, guid: f860ed9a04d775f42b13c1e96f091d76, type: 2}

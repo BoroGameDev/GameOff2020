@@ -5,7 +5,7 @@ using Moonshot.GameManagement;
 namespace Moonshot.UI.Quests {
 	public class Radar : MonoBehaviour {
 		[SerializeField] private GameObject indicator = null;
-		[SerializeField] private Transform destination = null;
+		public Transform destination = null;
 		private GameObject player;
 		private RectTransform indicatorRect;
 
