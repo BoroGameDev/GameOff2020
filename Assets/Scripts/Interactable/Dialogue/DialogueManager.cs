@@ -27,9 +27,13 @@ public class DialogueManager : MonoBehaviour {
 		sentences = new Queue<string>();
 	}
 
-	public void StartDialogue(Dialogue dialogue) {
+	public void StartDialogue(string name, Dialogue dialogue) {
+		if (name == "") {
+			EndDialogue();
+			return;
+		}
 		animator.SetBool("IsOpen", true);
-		nameText.text = dialogue.name;
+		nameText.text = name;
 
 		sentences.Clear();
 

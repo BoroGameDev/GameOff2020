@@ -1,4 +1,5 @@
 using Moonshot.GameManagement;
+using UnityEngine;
 
 public class NPC : Interactable {
 
@@ -17,8 +18,10 @@ public class NPC : Interactable {
 				- init quest dialog
 			- 
 		*/
-		DialogueManager.Instance.StartDialogue(dialogue);
-		GameEvents.Instance.DialogueStarted();
+		if (dialogue != null && name != null && name != "") {
+			DialogueManager.Instance.StartDialogue(name, dialogue);
+			GameEvents.Instance.DialogueStarted();
+		}
 		// Respond();
 	}
 

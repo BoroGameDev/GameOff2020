@@ -7,7 +7,11 @@ namespace Moonshot.Player {
 		[SerializeField]
 		[Range(0f, 10f)]
 		private float radius = 3f;
+
 		[SerializeField] private LayerMask InteractablesLayer;
+
+		private bool hasCollided = false;
+		private string prompt = "Press F";
 
 		void Start() {
 			input = GetComponent<BaseInput>();
@@ -16,6 +20,12 @@ namespace Moonshot.Player {
 		void Update() {
 			if (input.Interact) {
 				CheckHit();
+			}
+		}
+
+		void OnGUI() {
+			if (hasCollided == true) {
+				GUI.Box(new Rect(140, Screen.height - 50, Screen.width - 300, 120), prompt);
 			}
 		}
 
@@ -38,6 +48,7 @@ namespace Moonshot.Player {
 		void OnTriggerEnter2D(Collider2D other) {
 			Interactable interactable = other.GetComponentInParent<Interactable>();
 			if (interactable) {
+				hasCollided = true;
 				interactable.Highlight();
 			}
 		}
@@ -45,6 +56,7 @@ namespace Moonshot.Player {
 		void OnTriggerExit2D(Collider2D other) {
 			Interactable interactable = other.GetComponentInParent<Interactable>();
 			if (interactable) {
+				hasCollided = false;
 				interactable.Unhighlight();
 			}
 		}
