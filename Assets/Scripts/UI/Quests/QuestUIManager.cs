@@ -49,7 +49,7 @@ namespace Moonshot.UI.Quests {
 
 			QuestName.gameObject.SetActive(true);
 			string output = "";
-			output = $"{currentQuest.name}";
+			output = $"{currentQuest.title}";
 			QuestName.text = output;
 		}
 

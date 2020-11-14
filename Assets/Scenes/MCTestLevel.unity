@@ -8578,8 +8578,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c60ed763f2e4f49bcfd07fa60c6fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testQuest: {fileID: 11400000, guid: 31f7a3eec42bac9409ae43754aaf45c7, type: 2}
   OldMan: {fileID: 1152136869}
+  _location: {fileID: 11400000, guid: 6eefb3b9b88e44847b702ceb98e37a06, type: 2}
+  _frame: {fileID: 11400000, guid: f860ed9a04d775f42b13c1e96f091d76, type: 2}
+  _frameEventSuccess: {fileID: 11400000, guid: e34c3660232014e4ebfe386463f27101, type: 2}
+  _frameEventFail: {fileID: 11400000, guid: 8c54f68054ea98745881b37b94959b5d, type: 2}
 --- !u!4 &900020813
 Transform:
   m_ObjectHideFlags: 0

@@ -2,10 +2,7 @@
 using Moonshot.Inventories;
 using Moonshot.Items;
 
-using UnityEngine;
-
 namespace Moonshot.Quests {
-	[CreateAssetMenu(fileName = "New Delivery Event", menuName = "Quests/Delivery Event")]
 	public class DeliveryEvent : BaseEvent {
 
 		public NPC npc;
@@ -13,7 +10,11 @@ namespace Moonshot.Quests {
 		public Dialogue successDialogue;
 		public Dialogue failDialogue;
 
-		public override void Init() {
+		public DeliveryEvent(Quest _p, string _n, string _d, Item _item, NPC _npc, Dialogue _success, Dialogue _fail) : base(_p, _n, _d) {
+			npc = _npc;
+			item = _item;
+			successDialogue = _success;
+			failDialogue = _fail;
 			GameEvents.Instance.onDialogueStarted += DialogueStarted;
 		}
 

@@ -6,20 +6,21 @@ namespace Moonshot.Quests {
 
 	public enum EventStatus { WAITING, CURRENT, DONE }
 
-
-	[CreateAssetMenu(fileName = "New Quest Event", menuName = "Quests/Event")]
-	public class BaseEvent : ScriptableObject {
+	public class BaseEvent {
 
 		[HideInInspector] public Quest Parent;
 		public string Id { get; protected set; }
-		public string Name;
-		public string Description;
+		public string Name { get; protected set; }
+		public string Description { get; protected set; }
 		public EventStatus Status = EventStatus.WAITING;
 		public List<Path> Paths = new List<Path>();
 		[HideInInspector] public int Order = -1;
 
-		public virtual void Init() {
+		public BaseEvent(Quest _parent, string _name, string _description) {
 			Id = System.Guid.NewGuid().ToString();
+			Name = _name;
+			Description = _description;
+			Parent = _parent;
 		}
 
 		protected virtual bool IsRequirementSatisfied() {

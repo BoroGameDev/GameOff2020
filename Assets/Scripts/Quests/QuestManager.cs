@@ -25,14 +25,26 @@ namespace Moonshot.Quests {
 		}
 		#endregion
 
-		public Quest testQuest;
+		public Quest testQuest = new Quest("Building the Yeet Cannon");
 		[SerializeField] private NPC OldMan;
+
+		[Header("Quest Event Variables")]
+		[SerializeField] private Location _location;
+		[SerializeField] private Item _frame;
+		[SerializeField] private Dialogue _frameEventSuccess;
+		[SerializeField] private Dialogue _frameEventFail;
 
 		private bool questStarted = false;
 
 		private void SetupQuest() {
-			testQuest.Init();
-			testQuest.BFS(testQuest.events[0].Id);
+			BaseEvent a = testQuest.AddEvent(new LocationEvent(testQuest, "Go play in the grass", "That'll be nice.. plus you might find a frame there", _location));
+			BaseEvent b = testQuest.AddEvent(new CollectionEvent(testQuest, "Find car frame", "Well the grass was nice... now to find a car frame", _frame));
+			BaseEvent c = testQuest.AddEvent(new DeliveryEvent(testQuest, "Bring frame back to Old Man River", "Follow the sounds of his banjo", _frame, OldMan, _frameEventSuccess, _frameEventFail));
+
+			testQuest.AddPath(a.Id, b.Id);
+			testQuest.AddPath(b.Id, c.Id);
+
+			testQuest.BFS(a.Id);
 
 			var deliveryEvents = testQuest.events.FindAll(_e => _e is DeliveryEvent);
 			foreach (DeliveryEvent _e in deliveryEvents) {
