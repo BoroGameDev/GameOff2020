@@ -1,9 +1,44 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class Interactable : MonoBehaviour {
-	public float radius = 3f;
+
+	[SerializeField]
+	private InteractableSprites interactableSprites = new InteractableSprites();
+
+	SpriteRenderer spriteRenderer;
+
+	private CircleCollider2D viewableScope;
+
+	private float scopeRadius = .2f;
+
+	private bool highlighted = false;
+
+	void Start() {
+		viewableScope = GetComponent<CircleCollider2D>();
+		viewableScope.radius = scopeRadius;
+		viewableScope.isTrigger = true;
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		spriteRenderer.sprite = interactableSprites.Original;
+	}
 
 	public virtual void Interact() {
 		Debug.Log("Interaction not implemented");
+	}
+
+	public void Highlight() {
+		if (interactableSprites.Highlighted != null) {
+			spriteRenderer.sprite = interactableSprites.Highlighted;
+			highlighted = true;
+		}
+	}
+
+	public void Unhighlight() {
+		if (highlighted) {
+			spriteRenderer.sprite = interactableSprites.Original;
+			highlighted = false;
+		}
 	}
 }
