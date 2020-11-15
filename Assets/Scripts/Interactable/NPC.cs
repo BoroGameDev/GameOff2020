@@ -18,7 +18,7 @@ public class NPC : Interactable {
 				- init quest dialog
 			- 
 		*/
-		if (dialogue != null && name != null && name != "") {
+		if (dialogue != null && name != null) {
 			DialogueManager.Instance.StartDialogue(name, dialogue);
 			GameEvents.Instance.DialogueStarted();
 		}
