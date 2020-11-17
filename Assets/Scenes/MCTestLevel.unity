@@ -9617,6 +9617,10 @@ PrefabInstance:
       propertyPath: name
       value: Kidney
       objectReference: {fileID: 0}
+    - target: {fileID: 202458364147761635, guid: d98ec6e53c13e47859770d68f05d95ed, type: 3}
+      propertyPath: interactableSprites.Original
+      value: 
+      objectReference: {fileID: 5546671543968653177, guid: 85c7c5b1500b2ad43a7c20a2b1b845bb, type: 3}
     - target: {fileID: 202458364147761638, guid: d98ec6e53c13e47859770d68f05d95ed, type: 3}
       propertyPath: m_Name
       value: Old Man River

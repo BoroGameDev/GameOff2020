@@ -12,13 +12,10 @@ public class Interactable : MonoBehaviour {
 
 	private CircleCollider2D viewableScope;
 
-	private float scopeRadius = .2f;
-
 	private bool highlighted = false;
 
 	void Start() {
 		viewableScope = GetComponent<CircleCollider2D>();
-		viewableScope.radius = scopeRadius;
 		viewableScope.isTrigger = true;
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.sprite = interactableSprites.Original;
