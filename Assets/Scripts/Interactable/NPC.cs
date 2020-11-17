@@ -18,8 +18,7 @@ public class NPC : Interactable {
 			- 
 		*/
 		if (dialogue != null && name != null) {
-			DialogueManager.Instance.StartDialogue(name, dialogue);
-			GameEvents.Instance.DialogueStarted();
+			GameEvents.Instance.DialogueStarted(this);
 		}
 		// Respond();
 	}

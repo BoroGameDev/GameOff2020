@@ -19,10 +19,10 @@ public class DialogueManager : MonoBehaviour {
 
 	private void DialogueStarted(NPC _npc) {
 		npc = _npc;
-		StartDialogue();
+		StartDialogue(_npc.name);
 	}
 
-	public void StartDialogue(string name, Dialogue dialogue) {
+	public void StartDialogue(string name) {
 		if (name == "") {
 			EndDialogue();
 			return;
