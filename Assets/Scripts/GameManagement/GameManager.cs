@@ -21,6 +21,10 @@ namespace Moonshot.GameManagement {
 		}
 		#endregion
 
+		private bool paused = false;
+
+		public bool Paused { get { return paused; } }
+
 		public GameObject Player { get; private set; }
 
 		[SerializeField] private GameObject LoadingScreen;
@@ -33,12 +37,33 @@ namespace Moonshot.GameManagement {
 		private void Start() {
 			//SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive);
 		}
+
+		private void Update() {
+			if (Input.GetButtonDown("Cancel")) {
+				if (paused) {
+					UnpauseGame();
+				} else {
+					PauseGame();
+				}
+			}
+		}
 		#endregion
 
 		#region Custom Methods
+		public void PauseGame() {
+			SceneManager.LoadSceneAsync((int)SceneIndexes.PAUSE_MENU, LoadSceneMode.Additive);
+			paused = true;
+		}
+
+		public void UnpauseGame() {
+			SceneManager.UnloadSceneAsync((int)SceneIndexes.PAUSE_MENU);
+			paused = false;
+		}
+
 		public void SetPlayer(GameObject _player) {
 			Player = _player;
 		}
+
 		public void LoadGame() {
 			LoadingScreen.SetActive(true);
 
