@@ -8652,6 +8652,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5143297182987523878, guid: 2577bba996bf7f4479afd82ff144701b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143297182987523878, guid: 2577bba996bf7f4479afd82ff144701b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143297182987523878, guid: 2577bba996bf7f4479afd82ff144701b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2577bba996bf7f4479afd82ff144701b, type: 3}
 --- !u!1 &1113908816
@@ -9593,34 +9605,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 202458364147761633, guid: d98ec6e53c13e47859770d68f05d95ed, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 5546671543968653177, guid: 85c7c5b1500b2ad43a7c20a2b1b845bb, type: 3}
-    - target: {fileID: 202458364147761633, guid: d98ec6e53c13e47859770d68f05d95ed, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1301274933
-      objectReference: {fileID: 0}
-    - target: {fileID: 202458364147761633, guid: d98ec6e53c13e47859770d68f05d95ed, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 202458364147761633, guid: d98ec6e53c13e47859770d68f05d95ed, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 202458364147761635, guid: d98ec6e53c13e47859770d68f05d95ed, type: 3}
-      propertyPath: dialogue
-      value: 
-      objectReference: {fileID: 11400000, guid: 943954cbab2d5954b933931cea7f29b4, type: 2}
-    - target: {fileID: 202458364147761635, guid: d98ec6e53c13e47859770d68f05d95ed, type: 3}
-      propertyPath: name
-      value: Kidney
-      objectReference: {fileID: 0}
-    - target: {fileID: 202458364147761635, guid: d98ec6e53c13e47859770d68f05d95ed, type: 3}
-      propertyPath: interactableSprites.Original
-      value: 
-      objectReference: {fileID: 5546671543968653177, guid: 85c7c5b1500b2ad43a7c20a2b1b845bb, type: 3}
     - target: {fileID: 202458364147761638, guid: d98ec6e53c13e47859770d68f05d95ed, type: 3}
       propertyPath: m_Name
       value: Old Man River
