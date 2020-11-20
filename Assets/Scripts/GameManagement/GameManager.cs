@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Moonshot.UI;
+using Moonshot.Inventories;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Moonshot.GameManagement {
 
@@ -35,7 +38,7 @@ namespace Moonshot.GameManagement {
 
 		#region Unity Methods
 		private void Start() {
-			//SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive);
+			SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive);
 		}
 
 		private void Update() {
@@ -64,14 +67,26 @@ namespace Moonshot.GameManagement {
 			Player = _player;
 		}
 
-		public void LoadGame() {
+		public void LoadGameScene() {
 			LoadingScreen.SetActive(true);
 
 			scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.TITLE_SCREEN));
 			scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.TEST_LEVEL, LoadSceneMode.Additive));
 
 			StartCoroutine(GetSceneLoadProgress());
+
+			//WorldState state = LoadGame();
+			//if (state != null) {
+			//	Player.transform.position = new Vector3(
+			//		state.playerPosition[0],
+			//		state.playerPosition[1],
+			//		state.playerPosition[2]
+			//		);
+			//	Inventory.Instance.items = state.items;
+			//}
+
 			GameEvents.Instance.SceneLoaded(SceneIndexes.TEST_LEVEL);
+			LoadingScreen.SetActive(false);
 		}
 
 		public IEnumerator GetSceneLoadProgress() {
@@ -90,8 +105,51 @@ namespace Moonshot.GameManagement {
 				}
 			}
 
-			LoadingScreen.SetActive(false);
 		}
+
+		public void ToTitle() {
+			LoadingScreen.SetActive(true);
+
+			//SaveGame(Player.transform.position);
+
+			scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.PAUSE_MENU));
+			scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.TEST_LEVEL));
+			scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive));
+
+			StartCoroutine(GetSceneLoadProgress());
+			GameEvents.Instance.SceneLoaded(SceneIndexes.TITLE_SCREEN);
+		}
+
+		public void QuitGame() {
+			//SaveGame(Player.transform.position);
+			Application.Quit();
+		}
+
+		//public void SaveGame(Vector3 playerPosition) {
+		//	BinaryFormatter formatter = new BinaryFormatter();
+		//	string path = $"{Application.persistentDataPath}/worldstate.moonshot";
+		//	FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
+
+		//	WorldState state = new WorldState(playerPosition, Inventory.Instance);
+
+		//	formatter.Serialize(stream, state);
+		//	stream.Close();
+		//}
+
+		//public WorldState LoadGame() { 
+		//	BinaryFormatter formatter = new BinaryFormatter();
+		//	string path = $"{Application.persistentDataPath}/worldstate.moonshot";
+		//	if (File.Exists(path)) {
+		//		FileStream stream = new FileStream(path, FileMode.Open);
+		//		WorldState state = formatter.Deserialize(stream) as WorldState;
+		//		stream.Close();
+
+		//		return state;
+		//	} else {
+		//		Debug.Log("No save file exists");
+		//		return null;
+		//	}
+		//}
 		#endregion
 
 	}

@@ -6,7 +6,7 @@ namespace Moonshot.UI {
 	public class LoadGameButton : MonoBehaviour {
 
 		public void LoadGame() {
-			GameManager.Instance.LoadGame();
+			GameManager.Instance.LoadGameScene();
 		}
 
 	}

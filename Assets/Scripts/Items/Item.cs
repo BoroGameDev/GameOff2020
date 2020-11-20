@@ -3,6 +3,7 @@ using Moonshot.Inventories;
 
 namespace Moonshot.Items {
 	[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+	[System.Serializable]
 	public class Item : ScriptableObject {
 
 		new public string name = "New Item";

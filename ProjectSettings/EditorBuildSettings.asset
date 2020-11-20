@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene.unity
     guid: 27f9b35d983954949bd296ff15a35cd4
   - enabled: 1
-    path: Assets/Scenes/TestLevel.unity
-    guid: a5c1666b505e24e64b90d0ad9023b113
+    path: Assets/Scenes/MCTestLevel.unity
+    guid: a8108c68589bddc45b1cac056a0910d7
   - enabled: 1
     path: Assets/Scenes/PauseMenu.unity
     guid: 9a10828529715aa40b7acd43e0fd4fd9
