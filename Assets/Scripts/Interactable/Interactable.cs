@@ -15,8 +15,6 @@ public class Interactable : MonoBehaviour {
 	private Canvas highlightUI;
 
 	void Start() {
-		viewableScope = GetComponent<CircleCollider2D>();
-		viewableScope.isTrigger = true;
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.sprite = interactableSprites.Original;
 		highlightUI = GetComponentInChildren<Canvas>();
