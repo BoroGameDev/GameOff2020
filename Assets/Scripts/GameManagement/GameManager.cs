@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Moonshot.UI;
-using Moonshot.Inventories;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Moonshot.GameManagement {
 
@@ -25,8 +22,10 @@ namespace Moonshot.GameManagement {
 		#endregion
 
 		private bool paused = false;
-
 		public bool Paused { get { return paused; } }
+
+		private SceneIndexes currentScene;
+		public SceneIndexes CurrentScene { get { return currentScene; } }
 
 		public GameObject Player { get; private set; }
 
@@ -39,9 +38,12 @@ namespace Moonshot.GameManagement {
 		#region Unity Methods
 		private void Start() {
 			SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive);
+			currentScene = SceneIndexes.TITLE_SCREEN;
 		}
 
 		private void Update() {
+			if (currentScene != SceneIndexes.TEST_LEVEL) { return; }
+
 			if (Input.GetButtonDown("Cancel")) {
 				if (paused) {
 					UnpauseGame();
@@ -55,11 +57,13 @@ namespace Moonshot.GameManagement {
 		#region Custom Methods
 		public void PauseGame() {
 			SceneManager.LoadSceneAsync((int)SceneIndexes.PAUSE_MENU, LoadSceneMode.Additive);
+			currentScene = SceneIndexes.PAUSE_MENU;
 			paused = true;
 		}
 
 		public void UnpauseGame() {
 			SceneManager.UnloadSceneAsync((int)SceneIndexes.PAUSE_MENU);
+			currentScene = SceneIndexes.TEST_LEVEL;
 			paused = false;
 		}
 
@@ -85,6 +89,7 @@ namespace Moonshot.GameManagement {
 			//	Inventory.Instance.items = state.items;
 			//}
 
+			currentScene = SceneIndexes.TEST_LEVEL;
 			GameEvents.Instance.SceneLoaded(SceneIndexes.TEST_LEVEL);
 			LoadingScreen.SetActive(false);
 		}
@@ -117,6 +122,7 @@ namespace Moonshot.GameManagement {
 			scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive));
 
 			StartCoroutine(GetSceneLoadProgress());
+			currentScene = SceneIndexes.TITLE_SCREEN;
 			GameEvents.Instance.SceneLoaded(SceneIndexes.TITLE_SCREEN);
 		}
 
