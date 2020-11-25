@@ -65,5 +65,12 @@ namespace Moonshot.GameManagement {
 			}
 		}
 
+		public event Action onQuestCompleted;
+		public void QuestCompleted() {
+			if (onQuestCompleted != null) {
+				onQuestCompleted();
+			}
+		}
+
 	}
 }

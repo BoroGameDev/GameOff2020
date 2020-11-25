@@ -1,4 +1,6 @@
 ﻿
+using Moonshot.GameManagement;
+
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,6 +28,9 @@ namespace Moonshot.Quests {
 
 		public void CheckEvents() {
 			completed = events.All(evt => evt.Status == EventStatus.DONE);
+			if (completed) {
+				GameEvents.Instance.QuestCompleted();
+			}
 		}
 
 		public BaseEvent AddEvent(BaseEvent _event) {

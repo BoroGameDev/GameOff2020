@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Moonshot.GameManagement;
+
+using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -35,6 +37,7 @@ namespace Moonshot.Quests {
 			Status = _status;
 
 			if (_status == EventStatus.DONE) {
+				GameEvents.Instance.QuestEventCompleted();
 				foreach (Path p in Paths) {
 					p.endEvent.Start();
 				}

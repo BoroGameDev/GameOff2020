@@ -19,6 +19,7 @@ namespace Moonshot.Quests {
 		}
 
 		protected void DialogueStarted(NPC _npc) {
+			if (Parent.completed) { return; }
 			if (!Parent.started) { return; }
 			if (_npc != npc) { return; }
 			if (!Inventory.Instance.Contains(item)) {

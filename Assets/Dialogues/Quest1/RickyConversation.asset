@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4640a375081474b7a9f9936854cdcb8e, type: 3}
+  m_Name: RickyConversation
+  m_EditorClassIdentifier: 
+  sentences:
+  - Name: Ricky
+    Lines: "Leave me be Hank... I\u2019m trying to live out my time with my one true
+      love."
+  - Name: Hank
+    Lines: 'Listen here Ricky, I intend on drinking beer till I look as bad as you
+      do. '
+  - Name: Hank
+    Lines: You used to work on rockets. I need one to blow up the moon so we can
+      all keep on living our best lives. What do I need?
+  - Name: Ricky
+    Lines: "Well...if you can get me a car frame, we\u2019ll see what I can get going."

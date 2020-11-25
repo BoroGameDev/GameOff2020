@@ -21,61 +21,99 @@ namespace Moonshot.Quests {
 				DestroyImmediate(gameObject);
 				return;
 			}
-			SetupQuest();
+			SetupQuests();
 		}
 		#endregion
 
-		public Quest testQuest = new Quest("Building the Yeet Cannon");
+		public Queue<Quest> quests = new Queue<Quest>();
+
+		[Header("Story Options")]
 		[SerializeField] private NPC OldMan;
 
-		[Header("Quest Event Variables")]
-		[SerializeField] private Location _location;
-		[SerializeField] private Item _frame;
-		[SerializeField] private Dialogue _frameEventSuccess;
-		[SerializeField] private Dialogue _frameEventFail;
+		[Header("Quest 1")]
+		[SerializeField] private Dialogue _talkToRickyDialogue;
 
-		private bool questStarted = false;
+		[Header("Quest 1")]
+		[SerializeField] private Item _carFrameItem;
+		[SerializeField] private Dialogue _carFrameSuccessDialogue;
+		[SerializeField] private Dialogue _carFrameFailDialogue;
 
-		private void SetupQuest() {
-			BaseEvent a = testQuest.AddEvent(new LocationEvent(testQuest, "Go play in the grass", "That'll be nice.. plus you might find a frame there", _location));
-			BaseEvent b = testQuest.AddEvent(new CollectionEvent(testQuest, "Find car frame", "Well the grass was nice... now to find a car frame", _frame));
-			BaseEvent c = testQuest.AddEvent(new DeliveryEvent(testQuest, "Bring frame back to Old Man River", "Follow the sounds of his banjo", _frame, OldMan, _frameEventSuccess, _frameEventFail));
+		private void SetupQuests() {
+			quests.Enqueue(TalkToRicky());
+			quests.Enqueue(FindCarFrame());
 
-			testQuest.AddPath(a.Id, b.Id);
-			testQuest.AddPath(b.Id, c.Id);
+			GetCurrentQuest().Start();
+			SetQuestNPC();
 
-			testQuest.BFS(a.Id);
+			GameEvents.Instance.onQuestCompleted += QuestCompleted;
+		}
 
-			var deliveryEvents = testQuest.events.FindAll(_e => _e is DeliveryEvent);
+		private void OnDestroy() {
+			GameEvents.Instance.onQuestCompleted -= QuestCompleted;
+		}
+
+		private void QuestCompleted() {
+			quests.Dequeue();
+
+			if (quests.Count > 0) { 
+				SetQuestNPC();
+				GetCurrentQuest().Start();
+			}
+		}
+
+		private void SetQuestNPC() { 
+			var deliveryEvents = GetCurrentQuest().events.FindAll(_e => _e is DeliveryEvent);
 			foreach (DeliveryEvent _e in deliveryEvents) {
 				_e.npc = OldMan.GetComponent<NPC>();
 			}
-
-			GameEvents.Instance.onDialogueEnded += DialogueEnded;
-		}
-
-		private void DialogueEnded(NPC _npc) {
-			if (_npc != OldMan) { return; }
-			if (questStarted) { return; }
-
-			testQuest.Start();
-			questStarted = true;
-			StartCoroutine("PrintQuest");
+			var dialogueEvents = GetCurrentQuest().events.FindAll(_e => _e is DialogueEvent);
+			foreach (DialogueEvent _e in dialogueEvents) {
+				_e.npc = OldMan.GetComponent<NPC>();
+			}
 		}
 
 		public Quest GetCurrentQuest() {
-			return testQuest;
+			if (quests.Count == 0) { return null; }
+
+			return quests.Peek();
 		}
 
 		public List<BaseEvent> GetCurrentEvents() {
-			return testQuest.events.FindAll(_e => _e.Status == EventStatus.CURRENT);
+			if (quests.Count == 0) { return null; }
+
+			return GetCurrentQuest().events.FindAll(_e => _e.Status == EventStatus.CURRENT);
 		}
 
+		#region QuestBuilders
+		private Quest TalkToRicky() {
+			Quest quest = new Quest("Talk to Ricky");
+
+			BaseEvent a = quest.AddEvent(new DialogueEvent(quest, "Ask Ricky about the Moon", "", OldMan, _talkToRickyDialogue));
+
+			quest.BFS(a.Id);
+
+			return quest;
+		}
+
+		private Quest FindCarFrame() {
+			Quest quest = new Quest("Find Car Frame");
+
+			BaseEvent a = quest.AddEvent(new CollectionEvent(quest, "Find useable car", "", _carFrameItem));
+			BaseEvent b = quest.AddEvent(new DeliveryEvent(quest, "Bring frame to Ricky", "", _carFrameItem, OldMan, _carFrameSuccessDialogue, _carFrameFailDialogue));
+
+			quest.BFS(a.Id);
+
+			return quest;
+		}
+		#endregion
+
+		#region Debugging
 		private IEnumerator PrintQuest() { 
-			while (!testQuest.completed) {
-				testQuest.PrintPath();
+			while (!GetCurrentQuest().completed) {
+				GetCurrentQuest().PrintPath();
 				yield return new WaitForSeconds(3f);
 			}
 		}
+		#endregion
 	}
 }

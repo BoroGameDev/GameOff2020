@@ -37,8 +37,8 @@ namespace Moonshot.GameManagement {
 
 		#region Unity Methods
 		private void Start() {
-			SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive);
-			currentScene = SceneIndexes.TITLE_SCREEN;
+			//SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive);
+			//currentScene = SceneIndexes.TITLE_SCREEN;
 		}
 
 		private void Update() {

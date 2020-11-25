@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour {
 	public Text nameText;
 	public Text dialogueText;
 	public Animator animator;
-	public Queue<string> sentences = new Queue<string>();
+	public Queue<Sentence> sentences = new Queue<Sentence>();
 	private NPC npc;
 
 	void Start() {
@@ -19,20 +19,19 @@ public class DialogueManager : MonoBehaviour {
 
 	private void DialogueStarted(NPC _npc) {
 		npc = _npc;
-		StartDialogue(_npc.name);
+		StartDialogue(_npc);
 	}
 
-	public void StartDialogue(string name) {
-		if (name == "") {
+	public void StartDialogue(NPC _npc) {
+		if (_npc.name == "") {
 			EndDialogue();
 			return;
 		}
 		animator.SetBool("IsOpen", true);
-		nameText.text = name;
 
 		sentences.Clear();
 
-		foreach (string sentence in npc.dialogue.sentences) {
+		foreach (Sentence sentence in npc.dialogue.sentences) {
 			sentences.Enqueue(sentence);
 		}
 
@@ -47,10 +46,11 @@ public class DialogueManager : MonoBehaviour {
 			return;
 		}
 
-		string sentence = sentences.Dequeue();
-		dialogueText.text = sentence;
+		Sentence sentence = sentences.Dequeue();
+		nameText.text = sentence.Name;
+		dialogueText.text = sentence.Lines;
 		StopAllCoroutines();
-		StartCoroutine(TypeSentence(sentence));
+		StartCoroutine(TypeSentence(sentence.Lines));
 	}
 
 	IEnumerator TypeSentence(string sentence) {
