@@ -25,7 +25,8 @@ namespace Moonshot.Player {
 		}
 
 		void Update() {
-			if (!shouldAnimate) {
+			if (!shouldAnimate || GameManager.Instance.Paused) {
+				anim.SetBool("Moving", false);
 				return;
 			}
 

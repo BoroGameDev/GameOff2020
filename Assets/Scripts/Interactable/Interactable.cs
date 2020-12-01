@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(CircleCollider2D))]
@@ -13,12 +12,13 @@ public class Interactable : MonoBehaviour {
 	private CircleCollider2D viewableScope;
 
 	private bool highlighted = false;
+	private Canvas highlightUI;
 
 	void Start() {
-		viewableScope = GetComponent<CircleCollider2D>();
-		viewableScope.isTrigger = true;
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		spriteRenderer.sprite = interactableSprites.Original;
+		highlightUI = GetComponentInChildren<Canvas>();
+		highlightUI.gameObject.SetActive(false);
 	}
 
 	public virtual void Interact() {
@@ -26,6 +26,7 @@ public class Interactable : MonoBehaviour {
 	}
 
 	public void Highlight() {
+		highlightUI.gameObject.SetActive(true);
 		if (interactableSprites.Highlighted != null) {
 			spriteRenderer.sprite = interactableSprites.Highlighted;
 			highlighted = true;
@@ -33,6 +34,7 @@ public class Interactable : MonoBehaviour {
 	}
 
 	public void Unhighlight() {
+		highlightUI.gameObject.SetActive(false);
 		if (highlighted) {
 			spriteRenderer.sprite = interactableSprites.Original;
 			highlighted = false;

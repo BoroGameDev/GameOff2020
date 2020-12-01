@@ -11,7 +11,6 @@ namespace Moonshot.Player {
 		[SerializeField] private LayerMask InteractablesLayer;
 
 		private bool hasCollided = false;
-		private string prompt = "Press F";
 
 		void Start() {
 			input = GetComponent<BaseInput>();
@@ -20,12 +19,6 @@ namespace Moonshot.Player {
 		void Update() {
 			if (input.Interact) {
 				CheckHit();
-			}
-		}
-
-		void OnGUI() {
-			if (hasCollided == true) {
-				GUI.Box(new Rect(140, Screen.height - 50, Screen.width - 300, 120), prompt);
 			}
 		}
 

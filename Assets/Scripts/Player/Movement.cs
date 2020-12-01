@@ -59,7 +59,7 @@ namespace Moonshot.Player {
 		}
 
 		public void MoveCharacter() {
-			if (!isMoveable) {
+			if (!isMoveable || GameManager.Instance.Paused) {
 				return;
 			}
 			Vector3 move = new Vector3(input.Horizontal, input.Vertical, 0);

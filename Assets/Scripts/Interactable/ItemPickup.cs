@@ -7,11 +7,11 @@ namespace Moonshot.Interactables {
 	[RequireComponent(typeof(SpriteRenderer))]
 	public class ItemPickup : Interactable {
 		public Item item;
-		private SpriteRenderer spriteRenderer;
+		private SpriteRenderer _spriteRenderer;
 
 		private void Awake() {
-			spriteRenderer = GetComponent<SpriteRenderer>();
-			spriteRenderer.sprite = item.icon;
+			_spriteRenderer = GetComponent<SpriteRenderer>();
+			_spriteRenderer.sprite = item.icon;
 		}
 
 		public override void Interact() {
