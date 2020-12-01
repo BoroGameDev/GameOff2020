@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0dd4403489a74bc49bab06a68563310a, type: 3}
-  m_Name: Scrap Steel
+  m_Name: Car Frame
   m_EditorClassIdentifier: 
-  name: Scrap Steel
-  icon: {fileID: 21300000, guid: 8c904ddd698b7e4499e9b2ecf70500c8, type: 3}
+  name: Car Frame
+  icon: {fileID: 21300000, guid: 9db564c163b92a347948fc56e8d093a8, type: 3}
   showInInventory: 1

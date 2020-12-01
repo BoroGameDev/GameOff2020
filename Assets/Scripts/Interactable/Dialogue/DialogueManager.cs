@@ -13,25 +13,21 @@ public class DialogueManager : MonoBehaviour {
 	public Queue<Sentence> sentences = new Queue<Sentence>();
 	private NPC npc;
 
-	void Start() {
+	void Awake() {
 		GameEvents.Instance.onDialogueStarted += DialogueStarted;
 	}
 
 	private void DialogueStarted(NPC _npc) {
 		npc = _npc;
-		StartDialogue(_npc);
+		StartDialogue(_npc.dialogue);
 	}
 
-	public void StartDialogue(NPC _npc) {
-		if (_npc.name == "") {
-			EndDialogue();
-			return;
-		}
+	public void StartDialogue(Dialogue _dialogue) {
 		animator.SetBool("IsOpen", true);
 
 		sentences.Clear();
 
-		foreach (Sentence sentence in npc.dialogue.sentences) {
+		foreach (Sentence sentence in _dialogue.sentences) {
 			sentences.Enqueue(sentence);
 		}
 
@@ -64,5 +60,6 @@ public class DialogueManager : MonoBehaviour {
 	void EndDialogue() {
 		animator.SetBool("IsOpen", false);
 		GameEvents.Instance.DialogueEnded(npc);
+		npc = null;
 	}
 }

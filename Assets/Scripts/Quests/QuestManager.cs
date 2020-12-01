@@ -1,8 +1,6 @@
 ﻿using Moonshot.GameManagement;
 using Moonshot.Items;
-using Moonshot.Locations;
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -21,24 +19,26 @@ namespace Moonshot.Quests {
 				DestroyImmediate(gameObject);
 				return;
 			}
-			SetupQuests();
 		}
 		#endregion
 
 		public Queue<Quest> quests = new Queue<Quest>();
 
 		[Header("Story Options")]
+		[SerializeField] private NPC HanksTV;
 		[SerializeField] private NPC OldMan;
 
 		[Header("Quest 1")]
 		[SerializeField] private Dialogue _talkToRickyDialogue;
 
-		[Header("Quest 1")]
+		[Header("Quest 2")]
 		[SerializeField] private Item _carFrameItem;
 		[SerializeField] private Dialogue _carFrameSuccessDialogue;
 		[SerializeField] private Dialogue _carFrameFailDialogue;
 
-		private void SetupQuests() {
+		public void SetupQuests() {
+			Debug.Log("Setting Up Quests");
+
 			quests.Enqueue(TalkToRicky());
 			quests.Enqueue(FindCarFrame());
 
