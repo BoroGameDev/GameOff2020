@@ -86,12 +86,24 @@ TextureImporter:
   - first:
       213: -8531115393841240825
     second: Hank-SpriteSheet1-Sheet_27
+  - first:
+      213: 403913798519765358
+    second: Hank-SpriteSheet1-Sheet_28
+  - first:
+      213: 7802916671531342038
+    second: Hank-SpriteSheet1-Sheet_29
+  - first:
+      213: 638222944017721741
+    second: Hank-SpriteSheet1-Sheet_30
+  - first:
+      213: 6295040627274959642
+    second: Hank-SpriteSheet1-Sheet_31
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -792,6 +804,90 @@ TextureImporter:
       bones: []
       spriteID: 705e934cfb36b9980800000000000000
       internalID: -8531115393841240825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hank-SpriteSheet1-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6936a0b57dfa9500800000000000000
+      internalID: 403913798519765358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hank-SpriteSheet1-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d859920f57894c60800000000000000
+      internalID: 7802916671531342038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hank-SpriteSheet1-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d892ea9d26c6bd800800000000000000
+      internalID: 638222944017721741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hank-SpriteSheet1-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1b4063191a7c5750800000000000000
+      internalID: 6295040627274959642
       vertices: []
       indices: 
       edges: []
