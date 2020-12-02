@@ -2,6 +2,7 @@
 using Moonshot.Items;
 using System.Collections.Generic;
 using Moonshot.GameManagement;
+using System.Linq;
 
 namespace Moonshot.Inventories {
 	public class Inventory : MonoBehaviour {
@@ -38,6 +39,10 @@ namespace Moonshot.Inventories {
 
 		public bool Contains(Item _item) {
 			return items.Contains(_item);
+		}
+
+		public int CountItems(Item _item) {
+			return items.Where(i => i.Equals(_item)).Select(i => i).Count();
 		}
 	}
 }

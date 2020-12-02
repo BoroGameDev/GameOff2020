@@ -36,11 +36,37 @@ namespace Moonshot.Quests {
 		[SerializeField] private Dialogue _carFrameSuccessDialogue;
 		[SerializeField] private Dialogue _carFrameFailDialogue;
 
+		[Header("Quest 3")]
+		[SerializeField] private Item _propaneTanksItem;
+		[SerializeField] private Dialogue _propaneTanksSuccessDialogue;
+		[SerializeField] private Dialogue _propaneTanksFailDialogue;
+
+		[Header("Quest 4")]
+		[SerializeField] private Item _sewagePipesItem;
+		[SerializeField] private Dialogue _sewagePipesSuccessDialogue;
+		[SerializeField] private Dialogue _sewagePipesFailDialogue;
+
+		[Header("Quest 5")]
+		[SerializeField] private Item _moonshineItem;
+		[SerializeField] private Dialogue _moonshineSuccessDialogue;
+		[SerializeField] private Dialogue _moonshineFailDialogue;
+
+		[Header("Quest 6")]
+		[SerializeField] private Item _ductTapeItem;
+		[SerializeField] private Dialogue _fixitSuccessDialogue;
+		[SerializeField] private Dialogue _fixitFailDialogue;
+
 		public void SetupQuests() {
 			Debug.Log("Setting Up Quests");
 
 			quests.Enqueue(TalkToRicky());
 			quests.Enqueue(FindCarFrame());
+			quests.Enqueue(FindPropaneTanks());
+			quests.Enqueue(FindSewagePipes());
+			quests.Enqueue(GetMoonshine());
+			quests.Enqueue(GetFixitCombo());
+
+			StartCoroutine("PrintQuest");
 
 			GetCurrentQuest().Start();
 			SetQuestNPC();
@@ -96,11 +122,59 @@ namespace Moonshot.Quests {
 		}
 
 		private Quest FindCarFrame() {
-			Quest quest = new Quest("Find Car Frame");
+			Quest quest = new Quest("Find Cockpit");
 
 			BaseEvent a = quest.AddEvent(new CollectionEvent(quest, "Find useable car", "", _carFrameItem));
-			BaseEvent b = quest.AddEvent(new DeliveryEvent(quest, "Bring frame to Ricky", "", _carFrameItem, OldMan, _carFrameSuccessDialogue, _carFrameFailDialogue));
+			BaseEvent b = quest.AddEvent(new DeliveryEvent(quest, "Bring frame to Ricky", "", _carFrameItem, OldMan, 1, _carFrameSuccessDialogue, _carFrameFailDialogue));
 
+			quest.AddPath(a.Id, b.Id);
+			quest.BFS(a.Id);
+
+			return quest;
+		}
+
+		private Quest FindPropaneTanks() {
+			Quest quest = new Quest("Find Thrusters");
+
+			BaseEvent a = quest.AddEvent(new CollectionEvent(quest, "Get 2 Propane Tanks", "", _propaneTanksItem, 2));
+			BaseEvent b = quest.AddEvent(new DeliveryEvent(quest, "Bring tanks to Ricky", "", _propaneTanksItem, OldMan, 2, _propaneTanksSuccessDialogue, _propaneTanksFailDialogue));
+
+			quest.AddPath(a.Id, b.Id);
+			quest.BFS(a.Id);
+
+			return quest;
+		}
+
+		private Quest FindSewagePipes() {
+			Quest quest = new Quest("Find Fuel Tanks");
+
+			BaseEvent a = quest.AddEvent(new CollectionEvent(quest, "Get 2 Sewage Pipes", "", _sewagePipesItem, 2));
+			BaseEvent b = quest.AddEvent(new DeliveryEvent(quest, "Bring tanks to Ricky", "", _sewagePipesItem, OldMan, 2, _sewagePipesSuccessDialogue, _sewagePipesFailDialogue));
+
+			quest.AddPath(a.Id, b.Id);
+			quest.BFS(a.Id);
+
+			return quest;
+		}
+
+		private Quest GetMoonshine() {
+			Quest quest = new Quest("Get Moonshine");
+
+			BaseEvent a = quest.AddEvent(new CollectionEvent(quest, "Collect all your moonshine", "", _moonshineItem, 5));
+			BaseEvent b = quest.AddEvent(new DeliveryEvent(quest, "Give it to Ricky", "", _moonshineItem, OldMan, 5, _moonshineSuccessDialogue, _moonshineFailDialogue));
+
+			quest.AddPath(a.Id, b.Id);
+			quest.BFS(a.Id);
+
+			return quest;
+		}
+		private Quest GetFixitCombo() {
+			Quest quest = new Quest("Get Fix-It Combo Pack");
+
+			BaseEvent a = quest.AddEvent(new CollectionEvent(quest, "Get DuctTape and WD-30", "", _ductTapeItem, 1));
+			BaseEvent b = quest.AddEvent(new DeliveryEvent(quest, "Give it to Ricky", "", _ductTapeItem, OldMan, 1, _fixitSuccessDialogue, _fixitFailDialogue));
+
+			quest.AddPath(a.Id, b.Id);
 			quest.BFS(a.Id);
 
 			return quest;

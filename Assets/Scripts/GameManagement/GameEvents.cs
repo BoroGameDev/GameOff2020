@@ -29,6 +29,12 @@ namespace Moonshot.GameManagement {
 				onDialogueStarted(_npc);
 			}
 		}
+		public event Action onDialogueOpen;
+		public void DialogueOpen() {
+			if (onDialogueOpen != null) {
+				onDialogueOpen();
+			}
+		}
 
 		public event Action<NPC> onDialogueEnded;
 		public void DialogueEnded(NPC _npc) {

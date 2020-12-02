@@ -15,11 +15,20 @@ public class DialogueManager : MonoBehaviour {
 
 	void Awake() {
 		GameEvents.Instance.onDialogueStarted += DialogueStarted;
+		GameEvents.Instance.onDialogueOpen += DialogueOpen;
+	}
+
+	private void OnDestroy() {
+		GameEvents.Instance.onDialogueStarted -= DialogueStarted;
+		GameEvents.Instance.onDialogueOpen -= DialogueOpen;
 	}
 
 	private void DialogueStarted(NPC _npc) {
 		npc = _npc;
-		StartDialogue(_npc.dialogue);
+	}
+
+	private void DialogueOpen() { 
+		StartDialogue(npc.dialogue);
 	}
 
 	public void StartDialogue(Dialogue _dialogue) {

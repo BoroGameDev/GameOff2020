@@ -36,6 +36,7 @@ namespace Moonshot.GameManagement {
 			yield return new WaitForSeconds(2f);
 
 			GameEvents.Instance.DialogueStarted(HanksTV);
+			GameEvents.Instance.DialogueOpen();
 		}
 
 		void DialogueEnded(NPC _npc) {
